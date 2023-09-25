@@ -14,7 +14,7 @@
     "require-dev": {
         "mockery/mockery": "^1.4.4",
         "phpunit/phpunit": "^9.5.10",
-        "phpstan/phpstan": "< 1.9",
+        "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-mockery": "^1.1",
         "laravel/pint": "1.10.5",
         "qossmic/deptrac-shim": "^1.0",
@@ -26,19 +26,13 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
     "config": {
         "preferred-install": "dist",
-        "optimize-autoloader": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
+        "optimize-autoloader": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

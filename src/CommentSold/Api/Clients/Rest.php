@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace CommentSold\Api\Clients;
 
 use CommentSold\Api\Exception\CommentSoldException;
-use \GuzzleHttp\Client;
+use CommentSold\Api\Response;
+use GuzzleHttp\Client;
 
 class Rest
 {
     private const TOKEN_SERVICE_URL = 'https://tokens.cs-api.com';
     private const API_URL = 'https://openapi.commentsold.com/v1';
+
+    public const PER_PAGE = 10;
 
     public function get(string $token, string $endpoint, array $payload = []): object
     {
@@ -42,7 +45,7 @@ class Rest
         try {
             $client   = new Client();
             $response = $client->post(
-                self::TOKEN_SERVICE_URL . '/tokenize',
+                self::TOKEN_SERVICE_URL.'/tokenize',
                 [
                     'headers' => [
                         'Content-Type' => 'application/json',
@@ -52,12 +55,13 @@ class Rest
                     'body'    => json_encode([
                         'audience'   => 'openapi',
                         'partner_id' => $partnerId,
-                        'shop'       => $shopId
+                        'shop'       => $shopId,
                     ]),
                 ]
             );
+            $apiResponse = new Response($response);
 
-            return json_decode($response->getBody()->getContents())->token;
+            return $apiResponse->toObject()->token;
         } catch (\Throwable $e) {
             throw new CommentSoldException($e->getMessage(), $e->getCode());
         }
@@ -71,19 +75,20 @@ class Rest
                 self::API_URL.'/'.ltrim($endpoint, '/'),
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $token,
+                        'Authorization' => 'Bearer '.$token,
                         'Content-Type'  => 'application/json',
                         'Accept'        => 'application/json',
                     ],
                     'body'    => json_encode($payload),
                 ]
             );
+            $apiResponse = new Response($response);
 
             if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-                throw new CommentSoldException($response->getBody()->getContents(), $response->getStatusCode());
+                throw new CommentSoldException($apiResponse->getRawBody(), $response->getStatusCode());
             }
 
-            return json_decode($response->getBody()->getContents());
+            return $apiResponse->toObject();
         } catch (\Throwable $e) {
             throw new CommentSoldException($e->getMessage(), $e->getCode());
         }
