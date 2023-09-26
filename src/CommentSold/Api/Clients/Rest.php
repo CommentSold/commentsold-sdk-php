@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CommentSold\Api\Clients;
 
 use CommentSold\Api\Exception\CommentSoldException;
+use CommentSold\Api\Exception\InvalidResponseException;
 use CommentSold\Api\Response;
 use GuzzleHttp\Client;
 
@@ -12,8 +13,6 @@ class Rest
 {
     private const TOKEN_SERVICE_URL = 'https://tokens.cs-api.com';
     private const API_URL = 'https://openapi.commentsold.com/v1';
-
-    public const PER_PAGE = 10;
 
     public function get(string $token, string $endpoint, array $payload = []): object
     {
@@ -61,6 +60,10 @@ class Rest
             );
             $apiResponse = new Response($response);
 
+            if (! $response->getStatusCode() == 200) {
+                throw new InvalidResponseException($apiResponse->getRawBody(), $response->getStatusCode());
+            }
+
             return $apiResponse->toObject()->token;
         } catch (\Throwable $e) {
             throw new CommentSoldException($e->getMessage(), $e->getCode());
@@ -85,7 +88,7 @@ class Rest
             $apiResponse = new Response($response);
 
             if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-                throw new CommentSoldException($apiResponse->getRawBody(), $response->getStatusCode());
+                throw new InvalidResponseException($apiResponse->getRawBody(), $response->getStatusCode());
             }
 
             return $apiResponse->toObject();

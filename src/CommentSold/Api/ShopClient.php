@@ -8,6 +8,8 @@ use CommentSold\Api\Clients\Rest;
 
 class ShopClient
 {
+    private const PER_PAGE = 10;
+
     private Rest $restClient;
 
     public function __construct(
@@ -20,7 +22,7 @@ class ShopClient
     /**
      * Returns a paginated list of orders
      */
-    public function getOrders(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getOrders(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/orders?page={$page}&perPage={$perPage}");
     }
@@ -52,7 +54,7 @@ class ShopClient
     /**
      * Returns a paginated list of products
      */
-    public function getProducts(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getProducts(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/products?page={$page}&perPage={$perPage}");
     }
@@ -132,7 +134,7 @@ class ShopClient
     /**
      * Returns a paginated list of inventory levels
      */
-    public function getInventoryLevels(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getInventoryLevels(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/inventory_levels?page={$page}&perPage={$perPage}");
     }
@@ -180,7 +182,7 @@ class ShopClient
     /**
      * Returns a paginated list of reservations
      */
-    public function getReservations(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getReservations(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/reservations?page={$page}&perPage={$perPage}");
     }
@@ -220,7 +222,7 @@ class ShopClient
     /**
      * Returns a paginated list of Webhooks
      */
-    public function getWebhookListeners(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getWebhookListeners(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/webhooks?page={$page}&perPage={$perPage}");
     }
@@ -244,7 +246,7 @@ class ShopClient
     /**
      * Returns a paginated list of customers
      */
-    public function getCustomers(int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function getCustomers(int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->shopToken, "{$this->shopId}/customers?page={$page}&perPage={$perPage}");
     }
@@ -276,7 +278,7 @@ class ShopClient
     /**
      * Returns a paginated list of customers filtered by the search term
      */
-    public function searchCustomers(string $searchTerm, int $page = 1, int $perPage = Rest::PER_PAGE)
+    public function searchCustomers(string $searchTerm, int $page = 1, int $perPage = self::PER_PAGE)
     {
         return $this->restClient->post($this->shopToken, "{$this->shopId}/customers/search?page={$page}&perPage={$perPage}", ['term' => $searchTerm]);
     }

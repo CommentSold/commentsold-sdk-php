@@ -8,6 +8,8 @@ use CommentSold\Api\Clients\Rest;
 
 class GlobalClient
 {
+    public const PER_PAGE = 10;
+
     private Rest $restClient;
 
     public function __construct(private readonly string $partnerToken)
@@ -42,7 +44,7 @@ class GlobalClient
     /**
      * Get sub categories of category from optional parent category ID
      */
-    public function getSubCategories(int $categoryId = 0, $page = 1, $perPage = Rest::PER_PAGE)
+    public function getSubCategories(int $categoryId = 0, $page = 1, $perPage = self::PER_PAGE)
     {
         return $this->restClient->get($this->partnerToken, "categories/{$categoryId}?page={$page}&perPage={$perPage}");
     }
@@ -50,7 +52,7 @@ class GlobalClient
     /**
      * Search for categories with optional parent category ID restriction
      */
-    public function searchCategories(int $categoryId = 0, $page = 1, $perPage = Rest::PER_PAGE)
+    public function searchCategories(int $categoryId = 0, $page = 1, $perPage = self::PER_PAGE)
     {
         return $this->restClient->post($this->partnerToken, "search/{$categoryId}?page={$page}&perPage={$perPage}");
     }
