@@ -17,27 +17,27 @@ class Rest
     {
     }
 
-    public function get(string $endpoint, array $payload = []): object
+    public function get(string $endpoint, array $payload = []): Response
     {
         return $this->send('get', $endpoint, $payload);
     }
 
-    public function post(string $endpoint, array $payload = []): object
+    public function post(string $endpoint, array $payload = []): Response
     {
         return $this->send('post', $endpoint, $payload);
     }
 
-    public function put(string $endpoint, array $payload = []): object
+    public function put(string $endpoint, array $payload = []): Response
     {
         return $this->send('put', $endpoint, $payload);
     }
 
-    public function patch(string $endpoint, array $payload = []): object
+    public function patch(string $endpoint, array $payload = []): Response
     {
         return $this->send('patch', $endpoint, $payload);
     }
 
-    public function delete(string $endpoint, array $payload = []): object
+    public function delete(string $endpoint, array $payload = []): Response
     {
         return $this->send('delete', $endpoint, $payload);
     }
