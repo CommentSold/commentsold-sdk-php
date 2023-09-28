@@ -4,56 +4,19 @@ declare(strict_types=1);
 
 namespace CommentSold\Api;
 
-use CommentSold\Api\Clients\Rest;
+use CommentSold\Api\Enums\Context;
+use CommentSold\Api\Exception\InvalidContextException;
 
-class GlobalClient
+class GlobalClient extends AbstractClient
 {
-    public const PER_PAGE = 10;
-
-    private Rest $restClient;
-
-    public function __construct(private readonly string $partnerToken)
+    public function getContext(): Context
     {
-        $this->restClient = new Rest();
+        return Context::Global;
     }
 
-    /**
-     * Get tax quote for cart
-     */
-    public function getTaxQuote(array $payload)
+    // This really should never get called but liked the two clients having the same methods
+    public function getShopId(): string
     {
-        return $this->restClient->post($this->partnerToken, 'quote', $payload);
-    }
-
-    /**
-     * Create Shop
-     */
-    public function createShop(array $payload)
-    {
-        return $this->restClient->post($this->partnerToken, 'accounts', $payload);
-    }
-
-    /**
-     * Request a URL to redirect customers to prompt them for OAuth authorization
-     */
-    public function getOauthUrl(array $scopes, string $redirectUrl)
-    {
-        return $this->restClient->get($this->partnerToken, 'accounts/authorizeUrl?scopes='.implode(',', $scopes).'&redirect_uri='.$redirectUrl);
-    }
-
-    /**
-     * Get sub categories of category from optional parent category ID
-     */
-    public function getSubCategories(int $categoryId = 0, $page = 1, $perPage = self::PER_PAGE)
-    {
-        return $this->restClient->get($this->partnerToken, "categories/{$categoryId}?page={$page}&perPage={$perPage}");
-    }
-
-    /**
-     * Search for categories with optional parent category ID restriction
-     */
-    public function searchCategories(int $categoryId = 0, $page = 1, $perPage = self::PER_PAGE)
-    {
-        return $this->restClient->post($this->partnerToken, "search/{$categoryId}?page={$page}&perPage={$perPage}");
+        throw new InvalidContextException('Global client does not have a shopId');
     }
 }

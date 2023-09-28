@@ -11,66 +11,38 @@ use GuzzleHttp\Client;
 
 class Rest
 {
-    private const TOKEN_SERVICE_URL = 'https://tokens.cs-api.com';
     private const API_URL = 'https://openapi.commentsold.com/v1';
 
-    public function get(string $token, string $endpoint, array $payload = []): object
+    public function __construct(private readonly string $token)
     {
-        return $this->send('get', $endpoint, $payload, $token);
     }
 
-    public function post(string $token, string $endpoint, array $payload = []): object
+    public function get(string $endpoint, array $payload = []): object
     {
-        return $this->send('post', $endpoint, $payload, $token);
+        return $this->send('get', $endpoint, $payload);
     }
 
-    public function put(string $token, string $endpoint, array $payload = []): object
+    public function post(string $endpoint, array $payload = []): object
     {
-        return $this->send('put', $endpoint, $payload, $token);
+        return $this->send('post', $endpoint, $payload);
     }
 
-    public function patch(string $token, string $endpoint, array $payload = []): object
+    public function put(string $endpoint, array $payload = []): object
     {
-        return $this->send('patch', $endpoint, $payload, $token);
+        return $this->send('put', $endpoint, $payload);
     }
 
-    public function delete(string $token, string $endpoint, array $payload = []): object
+    public function patch(string $endpoint, array $payload = []): object
     {
-        return $this->send('delete', $endpoint, $payload, $token);
+        return $this->send('patch', $endpoint, $payload);
     }
 
-    public function getToken(string $privateKey, string $partnerId, ?string $shopId = null): string
+    public function delete(string $endpoint, array $payload = []): object
     {
-        try {
-            $client   = new Client();
-            $response = $client->post(
-                self::TOKEN_SERVICE_URL.'/tokenize',
-                [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Accept'       => 'application/json',
-                        'x-api-key'    => $privateKey,
-                    ],
-                    'body'    => json_encode([
-                        'audience'   => 'openapi',
-                        'partner_id' => $partnerId,
-                        'shop'       => $shopId,
-                    ]),
-                ]
-            );
-            $apiResponse = new Response($response);
-
-            if (! $response->getStatusCode() == 200) {
-                throw new InvalidResponseException($apiResponse->getRawBody(), $response->getStatusCode());
-            }
-
-            return $apiResponse->toObject()->token;
-        } catch (\Throwable $e) {
-            throw new CommentSoldException($e->getMessage(), $e->getCode());
-        }
+        return $this->send('delete', $endpoint, $payload);
     }
 
-    private function send(string $method, string $endpoint, array $payload, string $token): object
+    private function send(string $method, string $endpoint, array $payload): Response
     {
         try {
             $client = new Client();
@@ -78,7 +50,7 @@ class Rest
                 self::API_URL.'/'.ltrim($endpoint, '/'),
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer '.$token,
+                        'Authorization' => 'Bearer '.$this->token,
                         'Content-Type'  => 'application/json',
                         'Accept'        => 'application/json',
                     ],
@@ -91,7 +63,7 @@ class Rest
                 throw new InvalidResponseException($apiResponse->getRawBody(), $response->getStatusCode());
             }
 
-            return $apiResponse->toObject();
+            return $apiResponse;
         } catch (\Throwable $e) {
             throw new CommentSoldException($e->getMessage(), $e->getCode());
         }

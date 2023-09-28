@@ -18,7 +18,7 @@ class Response
         try {
             return $this->response->getBody()->getContents();
         } catch (\Throwable $e) {
-            throw new InvalidResponseException('Invalid response');
+            throw new InvalidResponseException('Invalid response: '.$e->getMessage());
         }
     }
 

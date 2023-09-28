@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Exception;
 
-class MissingArgumentException extends CommentSoldException
+class InvalidArgumentException extends CommentSoldException
 {
 }

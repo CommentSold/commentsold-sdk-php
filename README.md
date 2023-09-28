@@ -28,7 +28,8 @@ $tokenizer = new \CommentSold\Api\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getPartnerToken();
 
 $client = new \CommentSold\Api\GlobalClient($token);
-$oauthUrl = $client->getOauthUrl(['all'], 'https://my-return-url.com/oauth');
+$service = new \CommentSold\Api\Services\AccountService($client);
+$oauthUrl = $service->getOauthUrl(['all'], 'https://my-return-url.com/oauth');
 ```
 
 Example shop scope SDK usage:
@@ -37,5 +38,6 @@ $tokenizer = new \CommentSold\Api\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getShopToken('my-shop');
 
 $client = new \CommentSold\Api\ShopClient('my-shop', $token);
-$products = $client->getProducts();
+$service = new \COmmentSold\Api\Services\ProductService($client);
+$products = $service->getProducts();
 ```
