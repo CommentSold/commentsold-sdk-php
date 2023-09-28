@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\GlobalClient;
 
 class TaxService extends abstractService
 {
@@ -14,7 +14,7 @@ class TaxService extends abstractService
      */
     public function getTaxQuote(array $payload)
     {
-        if ($this->client->getContext() != Context::Global) {
+        if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 

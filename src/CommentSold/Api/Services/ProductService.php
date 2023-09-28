@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\ShopClient;
 
 class ProductService extends abstractService
 {
@@ -15,7 +15,7 @@ class ProductService extends abstractService
      */
     public function getProducts(int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -36,7 +36,7 @@ class ProductService extends abstractService
      */
     public function createProduct(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -50,7 +50,7 @@ class ProductService extends abstractService
      */
     public function getProduct(int $productId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -64,7 +64,7 @@ class ProductService extends abstractService
      */
     public function updateProduct(int $productId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -78,7 +78,7 @@ class ProductService extends abstractService
      */
     public function partialUpdateProduct(int $productId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -92,7 +92,7 @@ class ProductService extends abstractService
      */
     public function deleteProduct(int $productId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -106,7 +106,7 @@ class ProductService extends abstractService
      */
     public function createProductVariant(int $productId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -120,7 +120,7 @@ class ProductService extends abstractService
      */
     public function updateProductVariant(int $productId, int $variantId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -134,7 +134,7 @@ class ProductService extends abstractService
      */
     public function partialUpdateProductVariant(int $productId, int $variantId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -148,7 +148,7 @@ class ProductService extends abstractService
      */
     public function deleteProductVariant(int $productId, int $variantId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

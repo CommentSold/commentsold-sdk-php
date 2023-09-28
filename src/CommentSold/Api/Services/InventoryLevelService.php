@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\ShopClient;
 
 class InventoryLevelService extends abstractService
 {
@@ -15,7 +15,7 @@ class InventoryLevelService extends abstractService
      */
     public function getInventoryLevels(int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -36,7 +36,7 @@ class InventoryLevelService extends abstractService
      */
     public function getVariantInventoryLevels(int $variantId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -50,7 +50,7 @@ class InventoryLevelService extends abstractService
      */
     public function addVariantInventoryLevel(int $variantId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -64,7 +64,7 @@ class InventoryLevelService extends abstractService
      */
     public function subtractVariantInventoryLevel(int $variantId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -78,7 +78,7 @@ class InventoryLevelService extends abstractService
      */
     public function setVariantOnShelfLevel(int $variantId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

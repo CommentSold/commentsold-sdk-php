@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\ShopClient;
 
 class DropshippingService extends abstractService
 {
@@ -14,7 +14,7 @@ class DropshippingService extends abstractService
      */
     public function startDropshipAllocation(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -28,7 +28,7 @@ class DropshippingService extends abstractService
      */
     public function restockDropshipAllocation(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

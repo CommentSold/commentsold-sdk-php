@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
 use CommentSold\Api\Exception\InvalidResponseException;
+use CommentSold\Api\ShopClient;
 
 class CustomerService extends abstractService
 {
@@ -16,7 +16,7 @@ class CustomerService extends abstractService
      */
     public function getCustomers(int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -37,7 +37,7 @@ class CustomerService extends abstractService
      */
     public function createCustomer(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -51,7 +51,7 @@ class CustomerService extends abstractService
      */
     public function getCustomer(int $customerId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -65,7 +65,7 @@ class CustomerService extends abstractService
      */
     public function updateCustomer(int $customerId, array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -79,7 +79,7 @@ class CustomerService extends abstractService
      */
     public function searchCustomers(string $searchTerm, int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -103,7 +103,7 @@ class CustomerService extends abstractService
      */
     public function getCustomerByExternalId(string $customerId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

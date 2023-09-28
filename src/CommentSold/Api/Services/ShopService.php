@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\ShopClient;
 
 class ShopService extends abstractService
 {
@@ -14,7 +14,7 @@ class ShopService extends abstractService
      */
     public function updateShop(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

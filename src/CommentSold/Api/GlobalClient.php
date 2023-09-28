@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace CommentSold\Api;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidContextException;
 
 class GlobalClient extends AbstractClient
 {
-    public function getContext(): Context
-    {
-        return Context::Global;
-    }
-
     // This really should never get called but liked the two clients having the same methods
     public function getShopId(): string
     {

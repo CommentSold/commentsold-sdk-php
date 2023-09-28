@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\GlobalClient;
 
 class CategoryService extends abstractService
 {
@@ -15,7 +15,7 @@ class CategoryService extends abstractService
      */
     public function getSubCategories(int $categoryId = 0, int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Global) {
+        if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 
@@ -36,7 +36,7 @@ class CategoryService extends abstractService
      */
     public function searchCategories(int $categoryId = 0, int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Global) {
+        if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 

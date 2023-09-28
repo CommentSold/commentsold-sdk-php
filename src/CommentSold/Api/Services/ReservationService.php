@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\ShopClient;
 
 class ReservationService extends abstractService
 {
@@ -15,7 +15,7 @@ class ReservationService extends abstractService
      */
     public function getReservations(int $page = 1, int $perPage = self::PER_PAGE)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -36,7 +36,7 @@ class ReservationService extends abstractService
      */
     public function reserveProductVariant(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -50,7 +50,7 @@ class ReservationService extends abstractService
      */
     public function deleteReservation(int $reservationId)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
@@ -64,7 +64,7 @@ class ReservationService extends abstractService
      */
     public function deleteReservationsByProductVariant(int $variantId, int $quantity = 1)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 

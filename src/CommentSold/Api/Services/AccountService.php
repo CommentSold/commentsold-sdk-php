@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Enums\Context;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\GlobalClient;
+use CommentSold\Api\ShopClient;
 
 class AccountService extends abstractService
 {
@@ -14,7 +15,7 @@ class AccountService extends abstractService
      */
     public function createShop(array $payload)
     {
-        if ($this->client->getContext() != Context::Global) {
+        if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 
@@ -28,7 +29,7 @@ class AccountService extends abstractService
      */
     public function getOauthUrl(array $scopes, string $redirectUrl)
     {
-        if ($this->client->getContext() != Context::Global) {
+        if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 
@@ -42,7 +43,7 @@ class AccountService extends abstractService
      */
     public function getIframeUrl(array $payload)
     {
-        if ($this->client->getContext() != Context::Shop) {
+        if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
