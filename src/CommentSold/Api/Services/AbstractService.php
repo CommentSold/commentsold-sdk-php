@@ -9,7 +9,7 @@ use CommentSold\Api\Clients\Rest;
 
 abstract class AbstractService
 {
-    protected const PER_PAGE = 10;
+    public const PER_PAGE = 10;
 
     protected Rest $restClient;
 

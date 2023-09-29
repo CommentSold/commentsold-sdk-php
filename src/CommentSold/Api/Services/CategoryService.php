@@ -4,29 +4,23 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
 use CommentSold\Api\GlobalClient;
+use CommentSold\Api\Resources\Request\Category\GetSubCategoriesRequest;
+use CommentSold\Api\Resources\Request\Category\SearchCategoriesRequest;
 
 class CategoryService extends abstractService
 {
     /**
      * Get sub categories of category from optional parent category ID
      */
-    public function getSubCategories(int $categoryId = 0, int $page = 1, int $perPage = self::PER_PAGE)
+    public function getSubCategories(GetSubCategoriesRequest $payload)
     {
         if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 
-        if ($page < 1) {
-            throw new InvalidArgumentException('Page can not be less than 1');
-        }
-        if ($perPage < 1) {
-            throw new InvalidArgumentException('PerPage can not be less than 1');
-        }
-
-        $response = $this->restClient->get("categories/{$categoryId}?page={$page}&perPage={$perPage}");
+        $response = $this->restClient->get("categories/{$payload->category_id}", $payload);
 
         return $response->toObject();
     }
@@ -34,20 +28,13 @@ class CategoryService extends abstractService
     /**
      * Search for categories with optional parent category ID restriction
      */
-    public function searchCategories(int $categoryId = 0, int $page = 1, int $perPage = self::PER_PAGE)
+    public function searchCategories(SearchCategoriesRequest $payload)
     {
         if (! $this->client instanceof GlobalClient) {
             throw new InvalidContextException('Global client required');
         }
 
-        if ($page < 1) {
-            throw new InvalidArgumentException('Page can not be less than 1');
-        }
-        if ($perPage < 1) {
-            throw new InvalidArgumentException('PerPage can not be less than 1');
-        }
-
-        $response = $this->restClient->post("search/{$categoryId}?page={$page}&perPage={$perPage}");
+        $response = $this->restClient->post("search/{$payload->category_id}?page={$payload->page}&perPage={$payload->perPage}", $payload);
 
         return $response->toObject();
     }
