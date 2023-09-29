@@ -6,12 +6,12 @@ namespace CommentSold\Api\Resources\Request\Product;
 
 use CommentSold\Api\Resources\Request\AbstractRequest;
 
-class Image extends AbstractRequest
+class AttributeValues extends AbstractRequest
 {
     public function __construct(
-        public string $url,
-        public ?string $width = null,
-        public ?string $height = null,
+        public ?string $attribute_1 = null,
+        public ?string $attribute_2 = null,
+        public ?string $attribute_3 = null,
     ) {
     }
 }

@@ -8,4 +8,5 @@ use CommentSold\Api\Resources\AbstractResource;
 
 abstract class AbstractRequest extends AbstractResource
 {
+    public const PER_PAGE = 10;
 }

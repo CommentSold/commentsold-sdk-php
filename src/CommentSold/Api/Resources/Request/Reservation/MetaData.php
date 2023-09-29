@@ -6,9 +6,11 @@ namespace CommentSold\Api\Resources\Request\Reservation;
 
 use CommentSold\Api\Resources\Request\AbstractRequest;
 
-class CancelReservationRequest extends AbstractRequest
+class MetaData extends AbstractRequest
 {
-    public function __construct(public int $reservation_id)
-    {
+    public function __construct(
+        public string $experience,
+        public string $source,
+    ) {
     }
 }

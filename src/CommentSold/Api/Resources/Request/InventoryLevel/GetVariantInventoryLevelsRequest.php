@@ -8,10 +8,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 
 class GetVariantInventoryLevelsRequest extends AbstractRequest
 {
-    public int $variant_id;
-
-    public function __construct(int $variant_id)
+    public function __construct(public int $variant_id)
     {
-        $this->variant_id = $variant_id;
     }
 }

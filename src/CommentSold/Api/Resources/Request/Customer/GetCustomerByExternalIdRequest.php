@@ -8,10 +8,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 
 class GetCustomerByExternalIdRequest extends AbstractRequest
 {
-    public string $external_customer_id;
-
-    public function __construct(string $external_customer_id)
+    public function __construct(public string $external_customer_id)
     {
-        $this->external_customer_id = $external_customer_id;
     }
 }

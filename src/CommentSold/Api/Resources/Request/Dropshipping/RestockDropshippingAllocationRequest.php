@@ -9,10 +9,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 class RestockDropshippingAllocationRequest extends AbstractRequest
 {
     /** @var array[int] */
-    public array $product_ids;
-
-    public function __construct(array $payload)
+    public function __construct(public array $product_ids)
     {
-        $this->product_ids = $payload['product_ids'];
     }
 }

@@ -6,18 +6,13 @@ namespace CommentSold\Api\Resources\Request\Webhook;
 
 use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Resources\Request\AbstractRequest;
-use CommentSold\Api\Services\AbstractService;
 
 class GetWebhookListenersRequest extends AbstractRequest
 {
-    public int $page = 1;
-    public int $perPage = AbstractService::PER_PAGE;
-
-    public function __construct(array $payload)
-    {
-        $this->page    = $payload['page'];
-        $this->perPage = $payload['perPage'];
-
+    public function __construct(
+        public int $page = 1,
+        public int $perPage = self::PER_PAGE,
+    ) {
         if ($this->page < 1) {
             throw new InvalidArgumentException('Page can not be less than 1');
         }

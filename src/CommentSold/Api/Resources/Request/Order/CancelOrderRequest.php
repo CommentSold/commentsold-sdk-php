@@ -8,10 +8,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 
 class CancelOrderRequest extends AbstractRequest
 {
-    public int $order_id;
-
-    public function __construct(int $order_id)
+    public function __construct(public int $order_id)
     {
-        $this->order_id = $order_id;
     }
 }

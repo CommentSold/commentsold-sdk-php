@@ -8,10 +8,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 
 class GetIframeUrlRequest extends AbstractRequest
 {
-    public string $page;
-
-    public function __construct(array $payload)
+    public function __construct(public string $page)
     {
-        $this->page = $payload['page'];
     }
 }

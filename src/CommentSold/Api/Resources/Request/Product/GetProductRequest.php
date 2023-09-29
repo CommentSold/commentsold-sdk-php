@@ -8,10 +8,7 @@ use CommentSold\Api\Resources\Request\AbstractRequest;
 
 class GetProductRequest extends AbstractRequest
 {
-    public int $product_id;
-
-    public function __construct(int $product_id)
+    public function __construct(public int $product_id)
     {
-        $this->product_id = $product_id;
     }
 }
