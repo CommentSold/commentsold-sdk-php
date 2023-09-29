@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Services;
 
-use CommentSold\Api\Exception\InvalidArgumentException;
 use CommentSold\Api\Exception\InvalidContextException;
+use CommentSold\Api\Resources\Request\Webhook\AddWebhookListenerRequest;
+use CommentSold\Api\Resources\Request\Webhook\DeleteWebhookListenerRequest;
+use CommentSold\Api\Resources\Request\Webhook\GetWebhookListenersRequest;
 use CommentSold\Api\ShopClient;
 
 class WebhookService extends abstractService
@@ -13,20 +15,13 @@ class WebhookService extends abstractService
     /**
      * Returns a paginated list of Webhooks
      */
-    public function getWebhookListeners(int $page = 1, int $perPage = self::PER_PAGE)
+    public function getWebhookListeners(GetWebhookListenersRequest $payload)
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
-        if ($page < 1) {
-            throw new InvalidArgumentException('Page can not be less than 1');
-        }
-        if ($perPage < 1) {
-            throw new InvalidArgumentException('PerPage can not be less than 1');
-        }
-
-        $response = $this->restClient->get("{$this->client->getShopId()}/webhooks?page={$page}&perPage={$perPage}");
+        $response = $this->restClient->get("{$this->client->getShopId()}/webhooks", $payload);
 
         return $response->toObject();
     }
@@ -34,7 +29,7 @@ class WebhookService extends abstractService
     /**
      * Subscribe to a Webhook topic
      */
-    public function addWebhookListener(array $payload)
+    public function addWebhookListener(AddWebhookListenerRequest $payload)
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -48,13 +43,13 @@ class WebhookService extends abstractService
     /**
      * Unsubscribe a Webhook
      */
-    public function deleteWebhookListener(int $webhookId)
+    public function deleteWebhookListener(DeleteWebhookListenerRequest $payload)
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete("{$this->client->getShopId()}/webhooks/{$webhookId}");
+        $response = $this->restClient->delete("{$this->client->getShopId()}/webhooks/{$payload->webhook_id}");
 
         return $response->toObject();
     }

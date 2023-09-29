@@ -6,6 +6,7 @@ namespace CommentSold\Api\Clients;
 
 use CommentSold\Api\Exception\CommentSoldException;
 use CommentSold\Api\Exception\InvalidResponseException;
+use CommentSold\Api\Resources\Request\AbstractRequest;
 use CommentSold\Api\Response;
 use GuzzleHttp\Client;
 
@@ -17,32 +18,36 @@ class Rest
     {
     }
 
-    public function get(string $endpoint, array $payload = []): Response
+    public function get(string $endpoint, ?AbstractRequest $payload = null): Response
     {
+        if ($payload) {
+            $endpoint .= '?'.http_build_query($payload->toArray());
+        }
+
         return $this->send('get', $endpoint, $payload);
     }
 
-    public function post(string $endpoint, array $payload = []): Response
+    public function post(string $endpoint, ?AbstractRequest $payload = null): Response
     {
         return $this->send('post', $endpoint, $payload);
     }
 
-    public function put(string $endpoint, array $payload = []): Response
+    public function put(string $endpoint, ?AbstractRequest $payload = null): Response
     {
         return $this->send('put', $endpoint, $payload);
     }
 
-    public function patch(string $endpoint, array $payload = []): Response
+    public function patch(string $endpoint, ?AbstractRequest $payload = null): Response
     {
         return $this->send('patch', $endpoint, $payload);
     }
 
-    public function delete(string $endpoint, array $payload = []): Response
+    public function delete(string $endpoint, ?AbstractRequest $payload = null): Response
     {
         return $this->send('delete', $endpoint, $payload);
     }
 
-    private function send(string $method, string $endpoint, array $payload): Response
+    private function send(string $method, string $endpoint, ?AbstractRequest $payload = null): Response
     {
         try {
             $client = new Client();
@@ -54,7 +59,7 @@ class Rest
                         'Content-Type'  => 'application/json',
                         'Accept'        => 'application/json',
                     ],
-                    'body'    => json_encode($payload),
+                    'body'    => $payload?->toJson(),
                 ]
             );
             $apiResponse = new Response($response);

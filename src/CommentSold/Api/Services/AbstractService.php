@@ -9,8 +9,6 @@ use CommentSold\Api\Clients\Rest;
 
 abstract class AbstractService
 {
-    protected const PER_PAGE = 10;
-
     protected Rest $restClient;
 
     public function __construct(protected readonly AbstractClient $client)
