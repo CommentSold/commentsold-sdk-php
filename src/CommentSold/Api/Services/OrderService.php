@@ -9,6 +9,10 @@ use CommentSold\Api\Resources\Request\Order\CancelOrderLineItemRequest;
 use CommentSold\Api\Resources\Request\Order\CancelOrderRequest;
 use CommentSold\Api\Resources\Request\Order\CreateOrderRequest;
 use CommentSold\Api\Resources\Request\Order\GetOrdersRequest;
+use CommentSold\Api\Resources\Response\Order\CancelOrderLineItemResponse;
+use CommentSold\Api\Resources\Response\Order\CancelOrderResponse;
+use CommentSold\Api\Resources\Response\Order\CreateOrderResponse;
+use CommentSold\Api\Resources\Response\Order\GetOrdersResponse;
 use CommentSold\Api\ShopClient;
 
 class OrderService extends abstractService
@@ -16,7 +20,7 @@ class OrderService extends abstractService
     /**
      * Returns a paginated list of orders
      */
-    public function getOrders(GetOrdersRequest $payload)
+    public function getOrders(GetOrdersRequest $payload): GetOrdersResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -24,13 +28,13 @@ class OrderService extends abstractService
 
         $response = $this->restClient->get("{$this->client->getShopId()}/orders", $payload);
 
-        return $response->toObject();
+        return new GetOrdersResponse($response);
     }
 
     /**
      * Create an order
      */
-    public function createOrder(CreateOrderRequest $payload)
+    public function createOrder(CreateOrderRequest $payload): CreateOrderResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -38,13 +42,13 @@ class OrderService extends abstractService
 
         $response = $this->restClient->post("{$this->client->getShopId()}/orders", $payload);
 
-        return $response->toObject();
+        return new CreateOrderResponse($response);
     }
 
     /**
      * Cancels the entire order
      */
-    public function cancelOrder(CancelOrderRequest $payload)
+    public function cancelOrder(CancelOrderRequest $payload): CancelOrderResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -52,13 +56,13 @@ class OrderService extends abstractService
 
         $response = $this->restClient->put("{$this->client->getShopId()}/orders/{$payload->order_id}/cancel");
 
-        return $response->toObject();
+        return new CancelOrderResponse($response);
     }
 
     /**
      * Cancel line item from an order
      */
-    public function cancelOrderLineItem(CancelOrderLineItemRequest $payload)
+    public function cancelOrderLineItem(CancelOrderLineItemRequest $payload): CancelOrderLineItemResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -66,6 +70,6 @@ class OrderService extends abstractService
 
         $response = $this->restClient->put("{$this->client->getShopId()}/orders/{$payload->order_id}/{$payload->line_item_id}/cancel");
 
-        return $response->toObject();
+        return new CancelOrderLineItemResponse($response);
     }
 }

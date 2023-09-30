@@ -10,6 +10,11 @@ use CommentSold\Api\Resources\Request\InventoryLevel\GetInventoryLevelsRequest;
 use CommentSold\Api\Resources\Request\InventoryLevel\GetVariantInventoryLevelsRequest;
 use CommentSold\Api\Resources\Request\InventoryLevel\SetVariantOnShelfLevelRequest;
 use CommentSold\Api\Resources\Request\InventoryLevel\SubtractVariantInventoryLevelRequest;
+use CommentSold\Api\Resources\Response\InventoryLevel\AddVariantInventoryLevelResponse;
+use CommentSold\Api\Resources\Response\InventoryLevel\GetInventoryLevelsResponse;
+use CommentSold\Api\Resources\Response\InventoryLevel\GetVariantInventoryLevelsResponse;
+use CommentSold\Api\Resources\Response\InventoryLevel\SetVariantOnShelfLevelResponse;
+use CommentSold\Api\Resources\Response\InventoryLevel\SubtractVariantInventoryLevelResponse;
 use CommentSold\Api\ShopClient;
 
 class InventoryLevelService extends abstractService
@@ -17,7 +22,7 @@ class InventoryLevelService extends abstractService
     /**
      * Returns a paginated list of inventory levels
      */
-    public function getInventoryLevels(GetInventoryLevelsRequest $payload)
+    public function getInventoryLevels(GetInventoryLevelsRequest $payload): GetInventoryLevelsResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -25,13 +30,13 @@ class InventoryLevelService extends abstractService
 
         $response =  $this->restClient->get("{$this->client->getShopId()}/inventory_levels", $payload);
 
-        return $response->toObject();
+        return new GetInventoryLevelsResponse($response);
     }
 
     /**
      * Returns an inventory level for the given id
      */
-    public function getVariantInventoryLevels(GetVariantInventoryLevelsRequest $payload)
+    public function getVariantInventoryLevels(GetVariantInventoryLevelsRequest $payload): GetVariantInventoryLevelsResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -39,13 +44,13 @@ class InventoryLevelService extends abstractService
 
         $response = $this->restClient->get("{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}");
 
-        return $response->toObject();
+        return new GetVariantInventoryLevelsResponse($response);
     }
 
     /**
      * Add quantity to the inventory level for a variant
      */
-    public function addVariantInventoryLevel(AddVariantInventoryLevelRequest $payload)
+    public function addVariantInventoryLevel(AddVariantInventoryLevelRequest $payload): AddVariantInventoryLevelResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -53,13 +58,13 @@ class InventoryLevelService extends abstractService
 
         $response = $this->restClient->put("{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/add", $payload);
 
-        return $response->toObject();
+        return new AddVariantInventoryLevelResponse($response);
     }
 
     /**
      * Remove quantity from the inventory level for a variant
      */
-    public function subtractVariantInventoryLevel(SubtractVariantInventoryLevelRequest $payload)
+    public function subtractVariantInventoryLevel(SubtractVariantInventoryLevelRequest $payload): SubtractVariantInventoryLevelResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -67,13 +72,13 @@ class InventoryLevelService extends abstractService
 
         $response = $this->restClient->put("{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/subtract", $payload);
 
-        return $response->toObject();
+        return new SubtractVariantInventoryLevelResponse($response);
     }
 
     /**
      * Set on-shelf (available + held in carts) quantity absolutely for a variant (use with extreme caution)
      */
-    public function setVariantOnShelfLevel(SetVariantOnShelfLevelRequest $payload)
+    public function setVariantOnShelfLevel(SetVariantOnShelfLevelRequest $payload): SetVariantOnShelfLevelResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -81,6 +86,6 @@ class InventoryLevelService extends abstractService
 
         $response = $this->restClient->put("{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/set_absolute_shelf_quantity", $payload);
 
-        return $response->toObject();
+        return new SetVariantOnShelfLevelResponse($response);
     }
 }

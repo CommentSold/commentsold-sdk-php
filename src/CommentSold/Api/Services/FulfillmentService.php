@@ -6,6 +6,7 @@ namespace CommentSold\Api\Services;
 
 use CommentSold\Api\Exception\InvalidContextException;
 use CommentSold\Api\Resources\Request\Fulfillment\AddTrackingRequest;
+use CommentSold\Api\Resources\Response\Fulfillment\AddTrackingResponse;
 use CommentSold\Api\ShopClient;
 
 class FulfillmentService extends abstractService
@@ -13,7 +14,7 @@ class FulfillmentService extends abstractService
     /**
      * Add tracking information to a list of line items
      */
-    public function addTracking(AddTrackingRequest $payload)
+    public function addTracking(AddTrackingRequest $payload): AddTrackingResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -21,6 +22,6 @@ class FulfillmentService extends abstractService
 
         $response = $this->restClient->post("{$this->client->getShopId()}/fulfillment/addTracking", $payload);
 
-        return $response->toObject();
+        return new AddTrackingResponse($response);
     }
 }

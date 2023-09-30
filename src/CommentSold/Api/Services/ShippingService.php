@@ -6,6 +6,7 @@ namespace CommentSold\Api\Services;
 
 use CommentSold\Api\Exception\InvalidContextException;
 use CommentSold\Api\Resources\Request\Shipping\EstimateShippingRequest;
+use CommentSold\Api\Resources\Response\Shipping\EstimateShippingResponse;
 use CommentSold\Api\ShopClient;
 
 class ShippingService extends abstractService
@@ -13,7 +14,7 @@ class ShippingService extends abstractService
     /**
      * Calculate the estimated shipping price for a group of variants
      */
-    public function estimateShipping(EstimateShippingRequest $payload)
+    public function estimateShipping(EstimateShippingRequest $payload): EstimateShippingResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -21,6 +22,6 @@ class ShippingService extends abstractService
 
         $response = $this->restClient->post("{$this->client->getShopId()}/shipping_calculator", $payload);
 
-        return $response->toObject();
+        return new EstimateShippingResponse($response);
     }
 }

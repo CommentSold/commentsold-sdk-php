@@ -6,6 +6,7 @@ namespace CommentSold\Api\Services;
 
 use CommentSold\Api\Exception\InvalidContextException;
 use CommentSold\Api\Resources\Request\ProductCategory\UpdateProductCategoriesRequest;
+use CommentSold\Api\Resources\Response\ProductCategory\UpdateProductCategoriesResponse;
 use CommentSold\Api\ShopClient;
 
 class ProductCategoryService extends abstractService
@@ -13,7 +14,7 @@ class ProductCategoryService extends abstractService
     /**
      * Update the products to have the provided category. The existing category for the products will be overwritten.
      */
-    public function updateProductCategories(UpdateProductCategoriesRequest $payload)
+    public function updateProductCategories(UpdateProductCategoriesRequest $payload): UpdateProductCategoriesResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -21,6 +22,6 @@ class ProductCategoryService extends abstractService
 
         $response = $this->restClient->post("{$this->client->getShopId()}/product_categories", $payload);
 
-        return $response->toObject();
+        return new UpdateProductCategoriesResponse($response);
     }
 }
