@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Clients;
+namespace CommentSold\Clients;
 
-use Exception\CommentSoldException;
-use Exception\InvalidResponseException;
+use CommentSold\Exception\CommentSoldException;
+use CommentSold\Exception\InvalidResponseException;
+use CommentSold\Resources\Request\AbstractRequest;
+use CommentSold\Response;
 use GuzzleHttp\Client;
-use Resources\Request\AbstractRequest;
-use Response;
 
 class Rest
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Tax;
+namespace CommentSold\Resources\Request\Tax;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class FromAddress extends AbstractRequest
 {

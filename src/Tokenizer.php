@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use Exception\CommentSoldException;
-use Exception\InvalidResponseException;
-use Exception\InvalidTokenException;
+namespace CommentSold;
+
+use CommentSold\Exception\CommentSoldException;
+use CommentSold\Exception\InvalidResponseException;
+use CommentSold\Exception\InvalidTokenException;
 use GuzzleHttp\Client;
 
 class Tokenizer

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Customer;
+namespace CommentSold\Resources\Response\Customer;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Customer extends AbstractResource
 {

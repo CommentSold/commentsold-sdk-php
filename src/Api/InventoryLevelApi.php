@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\InventoryLevel\AddVariantInventoryLevelRequest;
-use Resources\Request\InventoryLevel\GetInventoryLevelsRequest;
-use Resources\Request\InventoryLevel\GetVariantInventoryLevelsRequest;
-use Resources\Request\InventoryLevel\SetVariantOnShelfLevelRequest;
-use Resources\Request\InventoryLevel\SubtractVariantInventoryLevelRequest;
-use Resources\Response\InventoryLevel\AddVariantInventoryLevelResponse;
-use Resources\Response\InventoryLevel\GetInventoryLevelsResponse;
-use Resources\Response\InventoryLevel\GetVariantInventoryLevelsResponse;
-use Resources\Response\InventoryLevel\SetVariantOnShelfLevelResponse;
-use Resources\Response\InventoryLevel\SubtractVariantInventoryLevelResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\InventoryLevel\AddVariantInventoryLevelRequest;
+use CommentSold\Resources\Request\InventoryLevel\GetInventoryLevelsRequest;
+use CommentSold\Resources\Request\InventoryLevel\GetVariantInventoryLevelsRequest;
+use CommentSold\Resources\Request\InventoryLevel\SetVariantOnShelfLevelRequest;
+use CommentSold\Resources\Request\InventoryLevel\SubtractVariantInventoryLevelRequest;
+use CommentSold\Resources\Response\InventoryLevel\AddVariantInventoryLevelResponse;
+use CommentSold\Resources\Response\InventoryLevel\GetInventoryLevelsResponse;
+use CommentSold\Resources\Response\InventoryLevel\GetVariantInventoryLevelsResponse;
+use CommentSold\Resources\Response\InventoryLevel\SetVariantOnShelfLevelResponse;
+use CommentSold\Resources\Response\InventoryLevel\SubtractVariantInventoryLevelResponse;
+use CommentSold\ShopClient;
 
 class InventoryLevelApi extends AbstractApi
 {

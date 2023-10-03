@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Product;
+namespace CommentSold\Resources\Request\Product;
 
-use Exception\InvalidArgumentException;
-use Resources\Request\AbstractRequest;
+use CommentSold\Exception\InvalidArgumentException;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class Variant extends AbstractRequest
 {

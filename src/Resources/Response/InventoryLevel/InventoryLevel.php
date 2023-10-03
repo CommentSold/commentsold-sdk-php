@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\InventoryLevel;
+namespace CommentSold\Resources\Response\InventoryLevel;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class InventoryLevel extends AbstractResource
 {

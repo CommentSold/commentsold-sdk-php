@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Account;
+namespace CommentSold\Resources\Request\Account;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class GetIframeUrlRequest extends AbstractRequest
 {

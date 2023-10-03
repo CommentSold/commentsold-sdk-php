@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Fulfillment;
+namespace CommentSold\Resources\Request\Fulfillment;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class AddTrackingRequest extends AbstractRequest
 {

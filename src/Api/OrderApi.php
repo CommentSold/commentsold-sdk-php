@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Order\CancelOrderLineItemRequest;
-use Resources\Request\Order\CancelOrderRequest;
-use Resources\Request\Order\CreateOrderRequest;
-use Resources\Request\Order\GetOrdersRequest;
-use Resources\Response\Order\CancelOrderLineItemResponse;
-use Resources\Response\Order\CancelOrderResponse;
-use Resources\Response\Order\CreateOrderResponse;
-use Resources\Response\Order\GetOrdersResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Order\CancelOrderLineItemRequest;
+use CommentSold\Resources\Request\Order\CancelOrderRequest;
+use CommentSold\Resources\Request\Order\CreateOrderRequest;
+use CommentSold\Resources\Request\Order\GetOrdersRequest;
+use CommentSold\Resources\Response\Order\CancelOrderLineItemResponse;
+use CommentSold\Resources\Response\Order\CancelOrderResponse;
+use CommentSold\Resources\Response\Order\CreateOrderResponse;
+use CommentSold\Resources\Response\Order\GetOrdersResponse;
+use CommentSold\ShopClient;
 
 class OrderApi extends AbstractApi
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Exception;
+namespace CommentSold\Exception;
 
 class InvalidResponseException extends CommentSoldException
 {

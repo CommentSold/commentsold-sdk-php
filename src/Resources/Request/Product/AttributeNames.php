@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Product;
+namespace CommentSold\Resources\Request\Product;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class AttributeNames extends AbstractRequest
 {

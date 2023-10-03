@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response;
+namespace CommentSold\Resources\Response;
 
 class Pagination extends AbstractResponse
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\ProductCategory;
+namespace CommentSold\Resources\Request\ProductCategory;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class UpdateProductCategoriesRequest extends AbstractRequest
 {

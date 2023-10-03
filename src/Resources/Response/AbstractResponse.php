@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response;
+namespace CommentSold\Resources\Response;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 abstract class AbstractResponse extends AbstractResource
 {

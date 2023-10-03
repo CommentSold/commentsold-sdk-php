@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use GlobalClient;
-use Resources\Request\Category\GetSubCategoriesRequest;
-use Resources\Request\Category\SearchCategoriesRequest;
-use Resources\Response\Category\GetSubCategoriesResponse;
-use Resources\Response\Category\SearchCategoriesResponse;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\GlobalClient;
+use CommentSold\Resources\Request\Category\GetSubCategoriesRequest;
+use CommentSold\Resources\Request\Category\SearchCategoriesRequest;
+use CommentSold\Resources\Response\Category\GetSubCategoriesResponse;
+use CommentSold\Resources\Response\Category\SearchCategoriesResponse;
 
 class CategoryApi extends AbstractApi
 {

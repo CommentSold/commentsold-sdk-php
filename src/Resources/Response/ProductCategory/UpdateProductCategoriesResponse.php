@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\ProductCategory;
+namespace CommentSold\Resources\Response\ProductCategory;
 
-use Resources\Response\AbstractResponse;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Response;
 
 class UpdateProductCategoriesResponse extends AbstractResponse
 {

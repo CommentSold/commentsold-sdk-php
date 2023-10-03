@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use AbstractClient;
-use Clients\Rest;
+use CommentSold\AbstractClient;
+use CommentSold\Clients\Rest;
 
 abstract class AbstractApi
 {

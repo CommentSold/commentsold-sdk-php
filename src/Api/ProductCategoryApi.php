@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\ProductCategory\UpdateProductCategoriesRequest;
-use Resources\Response\ProductCategory\UpdateProductCategoriesResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\ProductCategory\UpdateProductCategoriesRequest;
+use CommentSold\Resources\Response\ProductCategory\UpdateProductCategoriesResponse;
+use CommentSold\ShopClient;
 
 class ProductCategoryApi extends AbstractApi
 {

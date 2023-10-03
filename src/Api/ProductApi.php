@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Product\CreateProductRequest;
-use Resources\Request\Product\CreateProductVariantRequest;
-use Resources\Request\Product\DeleteProductRequest;
-use Resources\Request\Product\DeleteProductVariantRequest;
-use Resources\Request\Product\GetProductRequest;
-use Resources\Request\Product\GetProductsRequest;
-use Resources\Request\Product\PartialUpdateProductRequest;
-use Resources\Request\Product\PartialUpdateProductVariantRequest;
-use Resources\Request\Product\UpdateProductRequest;
-use Resources\Request\Product\UpdateProductVariantRequest;
-use Resources\Response\Product\CreateProductResponse;
-use Resources\Response\Product\CreateProductVariantResponse;
-use Resources\Response\Product\DeleteProductResponse;
-use Resources\Response\Product\DeleteProductVariantResponse;
-use Resources\Response\Product\GetProductResponse;
-use Resources\Response\Product\GetProductsResponse;
-use Resources\Response\Product\PartialUpdateProductResponse;
-use Resources\Response\Product\PartialUpdateProductVariantResponse;
-use Resources\Response\Product\UpdateProductResponse;
-use Resources\Response\Product\UpdateProductVariantResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Product\CreateProductRequest;
+use CommentSold\Resources\Request\Product\CreateProductVariantRequest;
+use CommentSold\Resources\Request\Product\DeleteProductRequest;
+use CommentSold\Resources\Request\Product\DeleteProductVariantRequest;
+use CommentSold\Resources\Request\Product\GetProductRequest;
+use CommentSold\Resources\Request\Product\GetProductsRequest;
+use CommentSold\Resources\Request\Product\PartialUpdateProductRequest;
+use CommentSold\Resources\Request\Product\PartialUpdateProductVariantRequest;
+use CommentSold\Resources\Request\Product\UpdateProductRequest;
+use CommentSold\Resources\Request\Product\UpdateProductVariantRequest;
+use CommentSold\Resources\Response\Product\CreateProductResponse;
+use CommentSold\Resources\Response\Product\CreateProductVariantResponse;
+use CommentSold\Resources\Response\Product\DeleteProductResponse;
+use CommentSold\Resources\Response\Product\DeleteProductVariantResponse;
+use CommentSold\Resources\Response\Product\GetProductResponse;
+use CommentSold\Resources\Response\Product\GetProductsResponse;
+use CommentSold\Resources\Response\Product\PartialUpdateProductResponse;
+use CommentSold\Resources\Response\Product\PartialUpdateProductVariantResponse;
+use CommentSold\Resources\Response\Product\UpdateProductResponse;
+use CommentSold\Resources\Response\Product\UpdateProductVariantResponse;
+use CommentSold\ShopClient;
 
 class ProductApi extends AbstractApi
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\InventoryLevel;
+namespace CommentSold\Resources\Response\InventoryLevel;
 
-use Resources\Response\AbstractResponse;
-use Resources\Response\Pagination;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Resources\Response\Pagination;
+use CommentSold\Response;
 
 class GetInventoryLevelsResponse extends AbstractResponse
 {

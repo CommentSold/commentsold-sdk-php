@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Webhook;
+namespace CommentSold\Resources\Response\Webhook;
 
-use Resources\Response\AbstractResponse;
-use Resources\Response\Pagination;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Resources\Response\Pagination;
+use CommentSold\Response;
 
 class GetWebhookListenersResponse extends AbstractResponse
 {

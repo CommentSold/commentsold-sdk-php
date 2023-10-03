@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use GlobalClient;
-use Resources\Request\Tax\GetTaxQuoteRequest;
-use Resources\Response\Tax\GetTaxQuoteResponse;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\GlobalClient;
+use CommentSold\Resources\Request\Tax\GetTaxQuoteRequest;
+use CommentSold\Resources\Response\Tax\GetTaxQuoteResponse;
 
 class TaxApi extends AbstractApi
 {

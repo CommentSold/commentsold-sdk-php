@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Webhook;
+namespace CommentSold\Resources\Request\Webhook;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class DeleteWebhookListenerRequest extends AbstractRequest
 {

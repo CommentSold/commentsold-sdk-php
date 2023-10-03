@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Reservation;
+namespace CommentSold\Resources\Request\Reservation;
 
-use Exception\InvalidArgumentException;
-use Resources\Request\AbstractRequest;
+use CommentSold\Exception\InvalidArgumentException;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class GetReservationsRequest extends AbstractRequest
 {

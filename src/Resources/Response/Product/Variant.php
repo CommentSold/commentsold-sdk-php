@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Product;
+namespace CommentSold\Resources\Response\Product;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Variant extends AbstractResource
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Shipping;
+namespace CommentSold\Resources\Request\Shipping;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class EstimateShippingRequest extends AbstractRequest
 {

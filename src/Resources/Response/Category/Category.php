@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Category;
+namespace CommentSold\Resources\Response\Category;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Category extends AbstractResource
 {

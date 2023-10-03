@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-use Exception\ApiErrorResponseException;
-use Exception\InvalidResponseException;
+namespace CommentSold;
+
+use CommentSold\Exception\ApiErrorResponseException;
+use CommentSold\Exception\InvalidResponseException;
 use Psr\Http\Message\ResponseInterface;
 
 class Response

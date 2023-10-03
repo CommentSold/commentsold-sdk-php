@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Dropshipping\RestockDropshippingAllocationRequest;
-use Resources\Request\Dropshipping\StartDropshippingAllocationRequest;
-use Resources\Response\Dropshipping\RestockDropshipAllocationResponse;
-use Resources\Response\Dropshipping\StartDropshipAllocationResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Dropshipping\RestockDropshippingAllocationRequest;
+use CommentSold\Resources\Request\Dropshipping\StartDropshippingAllocationRequest;
+use CommentSold\Resources\Response\Dropshipping\RestockDropshipAllocationResponse;
+use CommentSold\Resources\Response\Dropshipping\StartDropshipAllocationResponse;
+use CommentSold\ShopClient;
 
 class DropshippingApi extends AbstractApi
 {

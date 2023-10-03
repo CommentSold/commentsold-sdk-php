@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Dropshipping;
+namespace CommentSold\Resources\Request\Dropshipping;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class StartDropshippingAllocationRequest extends AbstractRequest
 {

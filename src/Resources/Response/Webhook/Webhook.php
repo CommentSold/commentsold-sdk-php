@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Webhook;
+namespace CommentSold\Resources\Response\Webhook;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Webhook extends AbstractResource
 {

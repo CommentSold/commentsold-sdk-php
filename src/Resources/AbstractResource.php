@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Resources;
+namespace CommentSold\Resources;
 
 abstract class AbstractResource
 {

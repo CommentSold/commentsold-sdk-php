@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Webhook\AddWebhookListenerRequest;
-use Resources\Request\Webhook\DeleteWebhookListenerRequest;
-use Resources\Request\Webhook\GetWebhookListenersRequest;
-use Resources\Response\Webhook\AddWebhookListenerResponse;
-use Resources\Response\Webhook\DeleteWebhookListenerResponse;
-use Resources\Response\Webhook\GetWebhookListenersResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Webhook\AddWebhookListenerRequest;
+use CommentSold\Resources\Request\Webhook\DeleteWebhookListenerRequest;
+use CommentSold\Resources\Request\Webhook\GetWebhookListenersRequest;
+use CommentSold\Resources\Response\Webhook\AddWebhookListenerResponse;
+use CommentSold\Resources\Response\Webhook\DeleteWebhookListenerResponse;
+use CommentSold\Resources\Response\Webhook\GetWebhookListenersResponse;
+use CommentSold\ShopClient;
 
 class WebhookApi extends AbstractApi
 {

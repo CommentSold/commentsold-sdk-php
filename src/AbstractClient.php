@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-use Clients\Rest;
+namespace CommentSold;
+
+use CommentSold\Clients\Rest;
 
 abstract class AbstractClient
 {

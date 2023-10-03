@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Customer;
+namespace CommentSold\Resources\Request\Customer;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class GetCustomerByExternalIdRequest extends AbstractRequest
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Shipping;
+namespace CommentSold\Resources\Response\Shipping;
 
-use Resources\Response\AbstractResponse;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Response;
 
 class EstimateShippingResponse extends AbstractResponse
 {

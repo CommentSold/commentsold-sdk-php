@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Shipping\EstimateShippingRequest;
-use Resources\Response\Shipping\EstimateShippingResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Shipping\EstimateShippingRequest;
+use CommentSold\Resources\Response\Shipping\EstimateShippingResponse;
+use CommentSold\ShopClient;
 
 class ShippingApi extends AbstractApi
 {

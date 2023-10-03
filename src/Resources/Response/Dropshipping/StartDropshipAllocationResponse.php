@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Dropshipping;
+namespace CommentSold\Resources\Response\Dropshipping;
 
-use Resources\Response\AbstractResponse;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Response;
 
 class StartDropshipAllocationResponse extends AbstractResponse
 {

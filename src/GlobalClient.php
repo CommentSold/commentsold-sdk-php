@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-use Exception\InvalidContextException;
+namespace CommentSold;
+
+use CommentSold\Exception\InvalidContextException;
 
 class GlobalClient extends AbstractClient
 {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Reservation\CancelReservationRequest;
-use Resources\Request\Reservation\CancelReservationsByVariantRequest;
-use Resources\Request\Reservation\GetReservationsRequest;
-use Resources\Request\Reservation\ReserveProductVariantRequest;
-use Resources\Response\Reservation\CancelReservationResponse;
-use Resources\Response\Reservation\CancelReservesByProductVariantResponse;
-use Resources\Response\Reservation\GetReservationsResponse;
-use Resources\Response\Reservation\ReserveProductVariantResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Reservation\CancelReservationRequest;
+use CommentSold\Resources\Request\Reservation\CancelReservationsByVariantRequest;
+use CommentSold\Resources\Request\Reservation\GetReservationsRequest;
+use CommentSold\Resources\Request\Reservation\ReserveProductVariantRequest;
+use CommentSold\Resources\Response\Reservation\CancelReservationResponse;
+use CommentSold\Resources\Response\Reservation\CancelReservesByProductVariantResponse;
+use CommentSold\Resources\Response\Reservation\GetReservationsResponse;
+use CommentSold\Resources\Response\Reservation\ReserveProductVariantResponse;
+use CommentSold\ShopClient;
 
 class ReservationApi extends AbstractApi
 {

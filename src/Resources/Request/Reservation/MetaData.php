@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Reservation;
+namespace CommentSold\Resources\Request\Reservation;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class MetaData extends AbstractRequest
 {

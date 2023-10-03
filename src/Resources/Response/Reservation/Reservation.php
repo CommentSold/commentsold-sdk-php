@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Reservation;
+namespace CommentSold\Resources\Response\Reservation;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Reservation extends AbstractResource
 {

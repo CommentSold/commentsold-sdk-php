@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Tax;
+namespace CommentSold\Resources\Response\Tax;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class Detail extends AbstractResource
 {

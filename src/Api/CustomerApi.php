@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Customer\CreateCustomerRequest;
-use Resources\Request\Customer\GetCustomerByExternalIdRequest;
-use Resources\Request\Customer\GetCustomerRequest;
-use Resources\Request\Customer\GetCustomersRequest;
-use Resources\Request\Customer\SearchCustomersRequest;
-use Resources\Request\Customer\UpdateCustomerRequest;
-use Resources\Response\Customer\CreateCustomerResponse;
-use Resources\Response\Customer\GetCustomerByExternalIdResponse;
-use Resources\Response\Customer\GetCustomerResponse;
-use Resources\Response\Customer\GetCustomersResponse;
-use Resources\Response\Customer\SearchCustomersResponse;
-use Resources\Response\Customer\UpdateCustomerResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Customer\CreateCustomerRequest;
+use CommentSold\Resources\Request\Customer\GetCustomerByExternalIdRequest;
+use CommentSold\Resources\Request\Customer\GetCustomerRequest;
+use CommentSold\Resources\Request\Customer\GetCustomersRequest;
+use CommentSold\Resources\Request\Customer\SearchCustomersRequest;
+use CommentSold\Resources\Request\Customer\UpdateCustomerRequest;
+use CommentSold\Resources\Response\Customer\CreateCustomerResponse;
+use CommentSold\Resources\Response\Customer\GetCustomerByExternalIdResponse;
+use CommentSold\Resources\Response\Customer\GetCustomerResponse;
+use CommentSold\Resources\Response\Customer\GetCustomersResponse;
+use CommentSold\Resources\Response\Customer\SearchCustomersResponse;
+use CommentSold\Resources\Response\Customer\UpdateCustomerResponse;
+use CommentSold\ShopClient;
 
 class CustomerApi extends AbstractApi
 {

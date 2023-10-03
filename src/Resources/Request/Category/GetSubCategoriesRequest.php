@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Category;
+namespace CommentSold\Resources\Request\Category;
 
-use Exception\InvalidArgumentException;
-use Resources\Request\AbstractRequest;
+use CommentSold\Exception\InvalidArgumentException;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class GetSubCategoriesRequest extends AbstractRequest
 {

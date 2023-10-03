@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use Resources\Request\Fulfillment\AddTrackingRequest;
-use Resources\Response\Fulfillment\AddTrackingResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\Resources\Request\Fulfillment\AddTrackingRequest;
+use CommentSold\Resources\Response\Fulfillment\AddTrackingResponse;
+use CommentSold\ShopClient;
 
 class FulfillmentApi extends AbstractApi
 {

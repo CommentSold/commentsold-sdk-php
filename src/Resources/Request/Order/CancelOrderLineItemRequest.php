@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Order;
+namespace CommentSold\Resources\Request\Order;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class CancelOrderLineItemRequest extends AbstractRequest
 {

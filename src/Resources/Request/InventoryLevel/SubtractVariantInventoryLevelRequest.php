@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\InventoryLevel;
+namespace CommentSold\Resources\Request\InventoryLevel;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class SubtractVariantInventoryLevelRequest extends AbstractRequest
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Order;
+namespace CommentSold\Resources\Response\Order;
 
-use Resources\AbstractResource;
+use CommentSold\Resources\AbstractResource;
 
 class ShippingAddress extends AbstractResource
 {

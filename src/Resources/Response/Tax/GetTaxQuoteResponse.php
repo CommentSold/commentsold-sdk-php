@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Resources\Response\Tax;
+namespace CommentSold\Resources\Response\Tax;
 
-use Resources\Response\AbstractResponse;
-use Response;
+use CommentSold\Resources\Response\AbstractResponse;
+use CommentSold\Response;
 
 class GetTaxQuoteResponse extends AbstractResponse
 {

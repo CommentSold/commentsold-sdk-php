@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Resources\Request\Shop;
+namespace CommentSold\Resources\Request\Shop;
 
-use Resources\Request\AbstractRequest;
+use CommentSold\Resources\Request\AbstractRequest;
 
 class UpdateShopRequest extends AbstractRequest
 {

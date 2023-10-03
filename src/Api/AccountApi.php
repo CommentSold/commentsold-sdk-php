@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Api;
+namespace CommentSold\Services;
 
-use Exception\InvalidContextException;
-use GlobalClient;
-use Resources\Request\Account\CreateShopRequest;
-use Resources\Request\Account\GetIframeUrlRequest;
-use Resources\Request\Account\GetOauthUrlRequest;
-use Resources\Response\Account\CreateShopResponse;
-use Resources\Response\Account\GetIframeUrlResponse;
-use Resources\Response\Account\GetOauthUrlResponse;
-use ShopClient;
+use CommentSold\Exception\InvalidContextException;
+use CommentSold\GlobalClient;
+use CommentSold\Resources\Request\Account\CreateShopRequest;
+use CommentSold\Resources\Request\Account\GetIframeUrlRequest;
+use CommentSold\Resources\Request\Account\GetOauthUrlRequest;
+use CommentSold\Resources\Response\Account\CreateShopResponse;
+use CommentSold\Resources\Response\Account\GetIframeUrlResponse;
+use CommentSold\Resources\Response\Account\GetOauthUrlResponse;
+use CommentSold\ShopClient;
 
 class AccountApi extends AbstractApi
 {
