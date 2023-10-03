@@ -23,21 +23,25 @@ The SDK is broken up to correspond to those two scopes. Both require their own t
 The first step for either is to obtain a token. Tokens are valid for 24 hours, so you should save them locally and reuse them in order to reduce unnecessary API calls.
 
 Example global scope SDK usage:
+
 ```php
-$tokenizer = new \CommentSold\Api\Tokenizer('my_private_key', 'my_partner_id');
+$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getPartnerToken();
 
-$client = new \CommentSold\Api\GlobalClient($token);
-$service = new \CommentSold\Api\Services\AccountService($client);
-$oauthUrl = $service->getOauthUrl(['all'], 'https://my-return-url.com/oauth');
+$client = new CommentSold\GlobalClient($token);
+$api = new CommentSold\Services\AccountApi($client);
+$oauthUrl = $api->getOauthUrl(['all'], 'https://my-return-url.com/oauth');
 ```
 
 Example shop scope SDK usage:
+
 ```php
-$tokenizer = new \CommentSold\Api\Tokenizer('my_private_key', 'my_partner_id');
+$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getShopToken('my-shop');
 
-$client = new \CommentSold\Api\ShopClient('my-shop', $token);
-$service = new \COmmentSold\Api\Services\ProductService($client);
-$products = $service->getProducts();
+$client = new CommentSold\ShopClient('my-shop', $token);
+$api = new CommentSold\Services\ProductApi($client);
+$response = $api->getProducts(); // raw response
+$products = $response->getData(); // the response data (in this case an array of products)
+$pagination = $response->getPagination(); // the pagination object
 ```
