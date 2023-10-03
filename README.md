@@ -29,7 +29,7 @@ $tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getPartnerToken();
 
 $client = new CommentSold\GlobalClient($token);
-$api = new CommentSold\Services\AccountApi($client);
+$api = new CommentSold\Api\AccountApi($client);
 $oauthUrl = $api->getOauthUrl(['all'], 'https://my-return-url.com/oauth');
 ```
 
@@ -40,7 +40,7 @@ $tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
 $token = $tokenizer->getShopToken('my-shop');
 
 $client = new CommentSold\ShopClient('my-shop', $token);
-$api = new CommentSold\Services\ProductApi($client);
+$api = new CommentSold\Api\ProductApi($client);
 $response = $api->getProducts(); // raw response
 $products = $response->getData(); // the response data (in this case an array of products)
 $pagination = $response->getPagination(); // the pagination object
