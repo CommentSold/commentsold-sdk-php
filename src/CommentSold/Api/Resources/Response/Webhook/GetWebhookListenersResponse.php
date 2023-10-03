@@ -10,10 +10,6 @@ use CommentSold\Api\Response;
 
 class GetWebhookListenersResponse extends AbstractResponse
 {
-    /** @var array[Webhook] */
-    public array $data;
-    public Pagination $pagination;
-
     public function __construct(Response $response)
     {
         $payload = $response->toObject();

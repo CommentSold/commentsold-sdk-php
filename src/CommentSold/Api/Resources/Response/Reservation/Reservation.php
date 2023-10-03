@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Reservation;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Reservation extends AbstractResponse
+class Reservation extends AbstractResource
 {
-    public int $id;
-    public int $customer_id;
-    public ?string $external_customer_id;
-    public int $variant_id;
-    public int $created_at;
-    public int $updated_at;
+    public readonly int $id;
+    public readonly int $customer_id;
+    public readonly ?string $external_customer_id;
+    public readonly int $variant_id;
+    public readonly int $created_at;
+    public readonly int $updated_at;
 
     public function __construct(object $payload)
     {

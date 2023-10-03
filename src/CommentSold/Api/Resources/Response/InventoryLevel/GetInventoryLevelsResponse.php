@@ -10,10 +10,6 @@ use CommentSold\Api\Response;
 
 class GetInventoryLevelsResponse extends AbstractResponse
 {
-    /** @var array[InventoryLevel] */
-    public array $data;
-    public Pagination $pagination;
-
     public function __construct(Response $response)
     {
         $payload = $response->toObject();

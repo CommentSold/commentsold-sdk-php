@@ -9,12 +9,12 @@ use CommentSold\Api\Response;
 
 class GetOauthUrlResponse extends AbstractResponse
 {
-    public string $url;
-
     public function __construct(Response $response)
     {
         $payload = $response->toObject();
 
-        $this->url = $payload->url;
+        $this->data = [
+            'url' => $payload->url,
+        ];
     }
 }

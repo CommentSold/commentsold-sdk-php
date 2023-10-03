@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class AttributeNames extends AbstractResponse
+class AttributeNames extends AbstractResource
 {
-    public ?string $attribute_1;
-    public ?string $attribute_2;
-    public ?string $attribute_3;
+    public readonly ?string $attribute_1;
+    public readonly ?string $attribute_2;
+    public readonly ?string $attribute_3;
 
     public function __construct(object $payload)
     {

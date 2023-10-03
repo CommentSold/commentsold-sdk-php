@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Customer;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Customer extends AbstractResponse
+class Customer extends AbstractResource
 {
-    public int $id;
-    public ?string $name;
-    public ?string $email;
-    public ?string $street_address;
-    public ?string $city;
-    public ?string $state;
-    public ?string $zip;
-    public ?string $country_code;
-    public ?string $phone_number;
-    public ?string $external_id;
-    public int $created_at;
-    public int $updated_at;
+    public readonly int $id;
+    public readonly ?string $name;
+    public readonly ?string $email;
+    public readonly ?string $street_address;
+    public readonly ?string $city;
+    public readonly ?string $state;
+    public readonly ?string $zip;
+    public readonly ?string $country_code;
+    public readonly ?string $phone_number;
+    public readonly ?string $external_id;
+    public readonly int $created_at;
+    public readonly int $updated_at;
 
     public function __construct(object $payload)
     {

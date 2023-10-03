@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
+use CommentSold\Api\Resources\Response\AbstractResponse;
 use CommentSold\Api\Response;
 
-class PartialUpdateProductResponse extends Product
+class PartialUpdateProductResponse extends AbstractResponse
 {
     public function __construct(Response $response)
     {
         $payload = $response->toObject();
 
-        parent::__construct($payload->data);
+        $this->data = new Product($payload->data);
     }
 }

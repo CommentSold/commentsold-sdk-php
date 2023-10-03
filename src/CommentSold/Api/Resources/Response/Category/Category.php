@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Category;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Category extends AbstractResponse
+class Category extends AbstractResource
 {
-    public int $id;
-    public string $title;
-    public string $full_path;
+    public readonly int $id;
+    public readonly string $title;
+    public readonly string $full_path;
 
     public function __construct(object $payload)
     {

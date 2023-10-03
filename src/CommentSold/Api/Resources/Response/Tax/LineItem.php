@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Tax;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class LineItem extends AbstractResponse
+class LineItem extends AbstractResource
 {
-    public string $sku;
-    public int $tax_amount;
-    public int $taxable_amount;
+    public readonly string $sku;
+    public readonly int $tax_amount;
+    public readonly int $taxable_amount;
     /** @var array[Detail] */
-    public array $details;
+    public readonly array $details;
 
     public function __construct(object $payload)
     {

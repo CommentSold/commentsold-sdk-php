@@ -10,10 +10,6 @@ use CommentSold\Api\Response;
 
 class GetReservationsResponse extends AbstractResponse
 {
-    /** @var array[Reservation] */
-    public array $data;
-    public Pagination $pagination;
-
     public function __construct(Response $response)
     {
         $payload = $response->toObject();

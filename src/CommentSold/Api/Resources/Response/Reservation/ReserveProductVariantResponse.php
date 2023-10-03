@@ -9,11 +9,10 @@ use CommentSold\Api\Response;
 
 class ReserveProductVariantResponse extends AbstractResponse
 {
-    /** @var array[int] */
-    public array $reservation_ids;
-
     public function __construct(Response $response)
     {
-        $this->reservation_ids = $response->toArray();
+        $this->data = [
+            'reservation_ids' => $response->toArray(),
+        ];
     }
 }

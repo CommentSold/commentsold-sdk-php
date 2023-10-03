@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class LineItem extends AbstractResponse
+class LineItem extends AbstractResource
 {
-    public int $id;
-    public int $product_id;
-    public int $variant_id;
-    public int $price;
-    public int $created_at;
-    public bool $is_returned;
+    public readonly int $id;
+    public readonly int $product_id;
+    public readonly int $variant_id;
+    public readonly int $price;
+    public readonly int $created_at;
+    public readonly bool $is_returned;
 
     public function __construct(object $payload)
     {

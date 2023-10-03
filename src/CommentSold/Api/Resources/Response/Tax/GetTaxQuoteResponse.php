@@ -31,10 +31,12 @@ class GetTaxQuoteResponse extends AbstractResponse
             $lineItems[] = new LineItem($lineItem);
         }
 
-        $this->tax_total      = $payload->tax_total;
-        $this->taxable_amount = $payload->taxable_amount;
-        $this->source         = $payload->source;
-        $this->details        = $details;
-        $this->lines          = $lineItems;
+        $this->data = [
+            'tax_total'      => $payload->tax_total,
+            'taxable_amount' => $payload->taxable_amount,
+            'source'         => $payload->source,
+            'details'        => $details,
+            'lines'          => $lineItems,
+        ];
     }
 }

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Dimensions extends AbstractResponse
+class Dimensions extends AbstractResource
 {
-    public ?int $length;
-    public ?int $width;
-    public ?int $height;
-    public ?int $weight;
+    public readonly ?int $length;
+    public readonly ?int $width;
+    public readonly ?int $height;
+    public readonly ?int $weight;
 
     public function __construct(object $payload)
     {

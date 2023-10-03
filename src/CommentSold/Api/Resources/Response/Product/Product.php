@@ -4,35 +4,35 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Product extends AbstractResponse
+class Product extends AbstractResource
 {
-    public int $id;
-    public string $name;
-    public string $description;
-    public ?string $style;
-    public ?string $brand;
-    public bool $charge_taxes;
-    public ?string $tax_code;
-    public ?int $shipping_price;
-    public bool $is_archived;
-    public ?int $quantity_per_user_limit;
-    public ?int $quantity_per_stream_per_user_limit;
-    public int $created_at;
-    public int $updated_at;
-    public bool $shop_favorite;
-    public AttributeNames $attribute_names;
-    public ?Image $main_image;
+    public readonly int $id;
+    public readonly string $name;
+    public readonly string $description;
+    public readonly ?string $style;
+    public readonly ?string $brand;
+    public readonly bool $charge_taxes;
+    public readonly ?string $tax_code;
+    public readonly ?int $shipping_price;
+    public readonly bool $is_archived;
+    public readonly ?int $quantity_per_user_limit;
+    public readonly ?int $quantity_per_stream_per_user_limit;
+    public readonly int $created_at;
+    public readonly int $updated_at;
+    public readonly bool $shop_favorite;
+    public readonly AttributeNames $attribute_names;
+    public readonly ?Image $main_image;
     /** @var array[Image] */
-    public array $additional_images;
+    public readonly array $additional_images;
     /** @var array[string] */
-    public array $tags;
-    public ?Category $category;
+    public readonly array $tags;
+    public readonly ?Category $category;
     /** @var array[Variant] */
-    public array $variants;
-    public ?ProductDropshipDetails $dropship_details;
-    public ?int $shopify_id;
+    public readonly array $variants;
+    public readonly ?ProductDropshipDetails $dropship_details;
+    public readonly ?int $shopify_id;
 
     public function __construct(object $payload)
     {

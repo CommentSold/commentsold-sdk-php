@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class ShippingAddress extends AbstractResponse
+class ShippingAddress extends AbstractResource
 {
-    public ?string $name;
-    public ?string $street_address;
-    public ?string $apartment;
-    public ?string $city;
-    public ?string $state;
-    public ?string $zip;
-    public ?string $country_code;
+    public readonly ?string $name;
+    public readonly ?string $street_address;
+    public readonly ?string $apartment;
+    public readonly ?string $city;
+    public readonly ?string $state;
+    public readonly ?string $zip;
+    public readonly ?string $country_code;
 
     public function __construct(object $payload)
     {

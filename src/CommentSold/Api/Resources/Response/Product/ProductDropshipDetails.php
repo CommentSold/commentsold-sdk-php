@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class ProductDropshipDetails extends AbstractResponse
+class ProductDropshipDetails extends AbstractResource
 {
-    public ?int $partner_id;
-    public ?string $partner_name;
-    public ?int $supplier_id;
-    public ?string $supplier_name;
+    public readonly ?int $partner_id;
+    public readonly ?string $partner_name;
+    public readonly ?int $supplier_id;
+    public readonly ?string $supplier_name;
 
     public function __construct(object $payload)
     {

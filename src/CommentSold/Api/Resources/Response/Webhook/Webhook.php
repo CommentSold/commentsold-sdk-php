@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Webhook;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Webhook extends AbstractResponse
+class Webhook extends AbstractResource
 {
-    public int $id;
-    public string $topic;
-    public string $url;
+    public readonly int $id;
+    public readonly string $topic;
+    public readonly string $url;
 
     public function __construct(object $payload)
     {

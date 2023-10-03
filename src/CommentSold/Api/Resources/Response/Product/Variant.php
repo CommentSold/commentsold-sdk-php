@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Variant extends AbstractResponse
+class Variant extends AbstractResource
 {
-    public int $id;
-    public int $product_id;
-    public ?string $name;
-    public int $price;
-    public int $original_price;
-    public int $cost;
-    public string $sku;
-    public ?string $barcode;
-    public Dimensions $dimensions;
-    public bool $is_archived;
-    public int $total_available_quantity;
-    public AttributeValues $attributes;
-    public VariantDropshipDetails $dropship_details;
-    public ?int $shopify_id;
-    public ?int $shopify_inventory_item_id;
+    public readonly int $id;
+    public readonly int $product_id;
+    public readonly ?string $name;
+    public readonly int $price;
+    public readonly int $original_price;
+    public readonly int $cost;
+    public readonly string $sku;
+    public readonly ?string $barcode;
+    public readonly Dimensions $dimensions;
+    public readonly bool $is_archived;
+    public readonly int $total_available_quantity;
+    public readonly AttributeValues $attributes;
+    public readonly VariantDropshipDetails $dropship_details;
+    public readonly ?int $shopify_id;
+    public readonly ?int $shopify_inventory_item_id;
 
     public function __construct(object $payload)
     {

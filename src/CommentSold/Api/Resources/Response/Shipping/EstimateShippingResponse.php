@@ -9,12 +9,12 @@ use CommentSold\Api\Response;
 
 class EstimateShippingResponse extends AbstractResponse
 {
-    public int $shipping_fee;
-
     public function __construct(Response $response)
     {
         $payload = $response->toObject();
 
-        $this->shipping_fee = $payload->shipping_fee;
+        $this->data = [
+            'shipping_fee' => $payload->shipping_fee,
+        ];
     }
 }

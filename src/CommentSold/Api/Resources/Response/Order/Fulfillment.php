@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Fulfillment extends AbstractResponse
+class Fulfillment extends AbstractResource
 {
-    public bool $local_pickup;
-    public FulfillmentV1 $v1;
+    public readonly bool $local_pickup;
+    public readonly FulfillmentV1 $v1;
     /** @var array[FulfillmentShippingLabel] */
-    public array $shipping_labels;
+    public readonly array $shipping_labels;
 
     public function __construct(object $payload)
     {

@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Payment extends AbstractResponse
+class Payment extends AbstractResource
 {
-    public ?string $amount;
-    public ?int $subtotal;
-    public ?int $shipping;
-    public ?int $taxes;
-    public int $coupon_discount;
-    public ?int $balance_applied;
-    public ?int $total;
-    public string $payment_ref;
-    public string $transaction_id;
-    public int $payment_date;
+    public readonly ?string $amount;
+    public readonly ?int $subtotal;
+    public readonly ?int $shipping;
+    public readonly ?int $taxes;
+    public readonly int $coupon_discount;
+    public readonly ?int $balance_applied;
+    public readonly ?int $total;
+    public readonly string $payment_ref;
+    public readonly string $transaction_id;
+    public readonly int $payment_date;
 
     public function __construct(object $payload)
     {

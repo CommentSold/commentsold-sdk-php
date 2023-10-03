@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Tax;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Detail extends AbstractResponse
+class Detail extends AbstractResource
 {
-    public string $tax_name;
-    public int $amount;
-    public int $rate;
-    public bool $flat_rate;
+    public readonly string $tax_name;
+    public readonly int $amount;
+    public readonly int $rate;
+    public readonly bool $flat_rate;
 
     public function __construct(object $payload)
     {

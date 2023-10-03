@@ -14,6 +14,8 @@ class CancelReservesByProductVariantResponse extends AbstractResponse
 
     public function __construct(Response $response)
     {
-        $this->canceled_reservation_ids = $response->toArray();
+        $this->data = [
+            'canceled_reservation_ids' => $response->toArray(),
+        ];
     }
 }

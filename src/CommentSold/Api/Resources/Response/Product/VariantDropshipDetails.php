@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Product;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class VariantDropshipDetails extends AbstractResponse
+class VariantDropshipDetails extends AbstractResource
 {
-    public int $unit_cost;
-    public int $partner_commission;
-    public int $minimum_configurable_retail_price;
-    public int $maximum_configurable_retail_price;
+    public readonly int $unit_cost;
+    public readonly int $partner_commission;
+    public readonly int $minimum_configurable_retail_price;
+    public readonly int $maximum_configurable_retail_price;
 
     public function __construct(object $payload)
     {

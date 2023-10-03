@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class Order extends AbstractResponse
+class Order extends AbstractResource
 {
-    public int $id;
-    public int $customer_id;
-    public string $status;
-    public ShippingAddress $shipping_address;
-    public Payment $payment;
-    public Fulfillment $fulfillment;
+    public readonly int $id;
+    public readonly int $customer_id;
+    public readonly string $status;
+    public readonly ShippingAddress $shipping_address;
+    public readonly Payment $payment;
+    public readonly Fulfillment $fulfillment;
     /** @var array[LineItem] */
-    public array $line_items;
-    public int $created_at;
-    public int $updated_at;
+    public readonly array $line_items;
+    public readonly int $created_at;
+    public readonly int $updated_at;
 
     public function __construct(object $payload)
     {

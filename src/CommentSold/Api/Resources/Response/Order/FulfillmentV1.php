@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CommentSold\Api\Resources\Response\Order;
 
-use CommentSold\Api\Resources\Response\AbstractResponse;
+use CommentSold\Api\Resources\AbstractResource;
 
-class FulfillmentV1 extends AbstractResponse
+class FulfillmentV1 extends AbstractResource
 {
-    public ?string $tracking_number;
-    public ?int $shipped_date;
-    public ?string $label_url;
+    public readonly ?string $tracking_number;
+    public readonly ?int $shipped_date;
+    public readonly ?string $label_url;
 
     public function __construct(object $payload)
     {
