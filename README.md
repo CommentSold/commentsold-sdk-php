@@ -41,5 +41,7 @@ $token = $tokenizer->getShopToken('my-shop');
 
 $client = new CommentSold\ShopClient('my-shop', $token);
 $api = new CommentSold\Services\ProductApi($client);
-$products = $api->getProducts();
+$response = $api->getProducts(); // raw response
+$products = $response->getData(); // the response data (in this case an array of products)
+$pagination = $response->getPagination(); // the pagination object
 ```
