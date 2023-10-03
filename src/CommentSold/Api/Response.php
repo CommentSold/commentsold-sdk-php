@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CommentSold\Api;
 
+use CommentSold\Api\Exception\ApiErrorResponseException;
 use CommentSold\Api\Exception\InvalidResponseException;
 use Psr\Http\Message\ResponseInterface;
 
@@ -11,6 +12,12 @@ class Response
 {
     public function __construct(private readonly ResponseInterface $response)
     {
+        if (isset($this->toObject()->error)) {
+            throw new ApiErrorResponseException(
+                message: $this->toObject()->error,
+                responseError: $this->toObject(),
+            );
+        }
     }
 
     public function getRawBody(): string

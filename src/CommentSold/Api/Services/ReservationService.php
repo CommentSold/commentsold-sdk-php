@@ -9,6 +9,10 @@ use CommentSold\Api\Resources\Request\Reservation\CancelReservationRequest;
 use CommentSold\Api\Resources\Request\Reservation\CancelReservationsByVariantRequest;
 use CommentSold\Api\Resources\Request\Reservation\GetReservationsRequest;
 use CommentSold\Api\Resources\Request\Reservation\ReserveProductVariantRequest;
+use CommentSold\Api\Resources\Response\Reservation\CancelReservationResponse;
+use CommentSold\Api\Resources\Response\Reservation\CancelReservesByProductVariantResponse;
+use CommentSold\Api\Resources\Response\Reservation\GetReservationsResponse;
+use CommentSold\Api\Resources\Response\Reservation\ReserveProductVariantResponse;
 use CommentSold\Api\ShopClient;
 
 class ReservationService extends abstractService
@@ -16,7 +20,7 @@ class ReservationService extends abstractService
     /**
      * Returns a paginated list of reservations
      */
-    public function getReservations(GetReservationsRequest $payload)
+    public function getReservations(GetReservationsRequest $payload): GetReservationsResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -24,13 +28,13 @@ class ReservationService extends abstractService
 
         $response = $this->restClient->get("{$this->client->getShopId()}/reservations", $payload);
 
-        return $response->toObject();
+        return new GetReservationsResponse($response);
     }
 
     /**
      * Reserve an item. Returns an array of CommentSold reservation ids
      */
-    public function reserveProductVariant(ReserveProductVariantRequest $payload)
+    public function reserveProductVariant(ReserveProductVariantRequest $payload): ReserveProductVariantResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -38,13 +42,13 @@ class ReservationService extends abstractService
 
         $response = $this->restClient->post("{$this->client->getShopId()}/reservations", $payload);
 
-        return $response->toObject();
+        return new ReserveProductVariantResponse($response);
     }
 
     /**
      * Cancel a reservation
      */
-    public function cancelReservation(CancelReservationRequest $payload)
+    public function cancelReservation(CancelReservationRequest $payload): CancelReservationResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -52,13 +56,13 @@ class ReservationService extends abstractService
 
         $response = $this->restClient->delete("{$this->client->getShopId()}/reservations/{$payload->reservation_id}");
 
-        return $response->toObject();
+        return new CancelReservationResponse($response);
     }
 
     /**
      * Cancel reservation(s) for the specified variant. (Not returned back to stock. Not recommended)
      */
-    public function cancelReservationsByProductVariant(CancelReservationsByVariantRequest $payload)
+    public function cancelReservationsByProductVariant(CancelReservationsByVariantRequest $payload): CancelReservesByProductVariantResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -66,6 +70,6 @@ class ReservationService extends abstractService
 
         $response = $this->restClient->delete("{$this->client->getShopId()}/reservations/variant/{$payload->variant_id}?quantity={$payload->quantity}");
 
-        return $response->toObject();
+        return new CancelReservesByProductVariantResponse($response);
     }
 }
