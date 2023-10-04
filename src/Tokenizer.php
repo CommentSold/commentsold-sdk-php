@@ -54,9 +54,11 @@ class Tokenizer
                         'x-api-key'    => $privateKey,
                     ],
                     'body'    => json_encode([
-                        'audience'   => 'openapi',
-                        'partner_id' => $partnerId,
-                        'shop'       => $shopId,
+                        'payload' => [
+                            'audience'   => 'openapi',
+                            'partner_id' => $partnerId,
+                            'shop'       => strtolower($shopId),
+                        ],
                     ]),
                 ]
             );

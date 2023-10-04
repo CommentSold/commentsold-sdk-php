@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace CommentSold\Resources\Response;
 
-class Pagination extends AbstractResponse
+use CommentSold\Resources\AbstractResource;
+
+class Pagination extends AbstractResource
 {
-    public int $total;
-    public int $count;
-    public int $perPage;
-    public int $currentPage;
-    public int $totalPages;
+    public readonly int $total;
+    public readonly int $count;
+    public readonly int $perPage;
+    public readonly int $currentPage;
+    public readonly int $totalPages;
 
     public function __construct(object $payload)
     {

@@ -13,6 +13,6 @@ class ShopClient extends AbstractClient
 
     public function getShopId(): string
     {
-        return $this->shopId;
+        return strtolower($this->shopId);
     }
 }

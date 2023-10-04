@@ -22,7 +22,7 @@ class Product extends AbstractResource
     public readonly int $created_at;
     public readonly int $updated_at;
     public readonly bool $shop_favorite;
-    public readonly AttributeNames $attribute_names;
+    public readonly ?AttributeNames $attribute_names;
     public readonly ?Image $main_image;
     /** @var array[Image] */
     public readonly array $additional_images;
@@ -42,7 +42,7 @@ class Product extends AbstractResource
         }
 
         $variants = [];
-        foreach ($$payload->variants ?? [] as $variant) {
+        foreach ($payload->variants ?? [] as $variant) {
             $variants[] = new Variant($variant);
         }
 
@@ -60,7 +60,7 @@ class Product extends AbstractResource
         $this->created_at                         = $payload->created_at;
         $this->updated_at                         = $payload->updated_at;
         $this->shop_favorite                      = $payload->shop_favorite;
-        $this->attribute_names                    = new AttributeNames($payload->attribute_names);
+        $this->attribute_names                    = $payload->attribute_names ? new AttributeNames($payload->attribute_names) : null;
         $this->main_image                         = $payload->main_image ? new Image($payload->main_image) : null;
         $this->additional_images                  = $additionalImages;
         $this->tags                               = $payload->tags;
