@@ -38,7 +38,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get("{$this->client->getShopId()}/products", $payload);
+        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/products", $payload);
 
         return new GetProductsResponse($response);
     }
@@ -52,7 +52,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/products", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/products", $payload);
 
         return new CreateProductResponse($response);
     }
@@ -66,7 +66,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get("{$this->client->getShopId()}/products/{$payload->product_id}");
+        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}");
 
         return new GetProductResponse($response);
     }
@@ -80,7 +80,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put("{$this->client->getShopId()}/products/{$payload->product_id}", $payload);
+        $response = $this->restClient->put($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}", $payload);
 
         return new UpdateProductResponse($response);
     }
@@ -94,7 +94,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->patch("{$this->client->getShopId()}/products/{$payload->product_id}", $payload);
+        $response = $this->restClient->patch($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}", $payload);
 
         return new PartialUpdateProductResponse($response);
     }
@@ -108,7 +108,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete("{$this->client->getShopId()}/products/{$payload->product_id}");
+        $response = $this->restClient->delete($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}");
 
         return new DeleteProductResponse($response);
     }
@@ -122,7 +122,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/products/{$payload->product_id}/variant", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}/variant", $payload);
 
         return new CreateProductVariantResponse($response);
     }
@@ -136,7 +136,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put("{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}", $payload);
+        $response = $this->restClient->put($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}", $payload);
 
         return new UpdateProductVariantResponse($response);
     }
@@ -150,7 +150,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->patch("{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}", $payload);
+        $response = $this->restClient->patch($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}", $payload);
 
         return new PartialUpdateProductVariantResponse($response);
     }
@@ -164,7 +164,7 @@ class ProductApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete("{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}");
+        $response = $this->restClient->delete($this->baseUrl."{$this->client->getShopId()}/products/{$payload->product_id}/variant/{$payload->variant_id}");
 
         return new DeleteProductVariantResponse($response);
     }

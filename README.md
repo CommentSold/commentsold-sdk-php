@@ -47,7 +47,33 @@ $token = $tokenizer->getShopToken('my-shop');
 $client = new CommentSold\ShopClient('my-shop', $token);
 $api = new CommentSold\Services\ProductApi($client);
 $request = new CommentSold\Resources\Request\Product\GetProductsRequest();
-$response = $api->getProducts($request); // raw response object
-$products = $response->getData(); // the response data (in this case an array of products)
-$pagination = $response->getPagination(); // the pagination detail array
+
+// raw response object
+$response = $api->getProducts($request);
+// the response data object (in this case an array of product objects)
+$products = $response->getData();
+// if you would rather work with the response as an array
+$productsAsArray = $response->getData()->toArray();
+
+// the pagination detail object
+$pagination = $response->getPagination();
+// the total number of results
+$totalCount = $pagination->total;
+
+```
+
+Example using the sandbox for testing:
+
+```php
+require __DIR__.'/vendor/autoload.php';
+
+$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
+$tokenizer->setEnvironment(CommentSold\Enums\Environment::SANDBOX);
+$token = $tokenizer->getPartnerToken();
+
+$client = new CommentSold\GlobalClient($token);
+$client->setEnvironment(CommentSold\Enums\Environment::SANDBOX);
+$api = new CommentSold\Services\AccountApi($client);
+$request = new CommentSold\Resources\Request\Account\GetOauthUrlRequest(['all'], 'https://my-return-url.com/oauth');
+$oauthUrl = $api->getOauthUrl($request);
 ```

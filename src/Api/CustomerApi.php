@@ -30,7 +30,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get("{$this->client->getShopId()}/customers", $payload);
+        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/customers", $payload);
 
         return new GetCustomersResponse($response);
     }
@@ -44,7 +44,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/customers", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/customers", $payload);
 
         return new CreateCustomerResponse($response);
     }
@@ -58,7 +58,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get("{$this->client->getShopId()}/customers/{$payload->customer_id}");
+        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/customers/{$payload->customer_id}");
 
         return new GetCustomerResponse($response);
     }
@@ -72,7 +72,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/customers/{$payload->customer_id}", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/customers/{$payload->customer_id}", $payload);
 
         return new UpdateCustomerResponse($response);
     }
@@ -86,7 +86,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/customers/search?page={$payload->page}&perPage={$payload->perPage}", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/customers/search?page={$payload->page}&perPage={$payload->perPage}", $payload);
 
         return new SearchCustomersResponse($response);
     }
@@ -100,7 +100,7 @@ class CustomerApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get("{$this->client->getShopId()}/customers/externalId/{$payload->external_customer_id}");
+        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/customers/externalId/{$payload->external_customer_id}");
 
         return new GetCustomerByExternalIdResponse($response);
     }

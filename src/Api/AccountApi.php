@@ -25,7 +25,7 @@ class AccountApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->post('accounts', $payload);
+        $response = $this->restClient->post($this->baseUrl.'accounts', $payload);
 
         return new CreateShopResponse($response);
     }
@@ -39,7 +39,7 @@ class AccountApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->post('accounts/authorizeUrl', $payload);
+        $response = $this->restClient->post($this->baseUrl.'accounts/authorizeUrl', $payload);
 
         return new GetOauthUrlResponse($response);
     }
@@ -53,7 +53,7 @@ class AccountApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/accounts/loginLink", $payload);
+        $response = $this->restClient->post($this->baseUrl.$this->client->getShopId().'/accounts/loginLink', $payload);
 
         return new GetIframeUrlResponse($response);
     }

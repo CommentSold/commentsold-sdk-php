@@ -4,19 +4,35 @@ declare(strict_types=1);
 
 namespace CommentSold;
 
+use CommentSold\Enums\Environment;
 use CommentSold\Exception\CommentSoldException;
+use CommentSold\Exception\InvalidArgumentException;
 use CommentSold\Exception\InvalidResponseException;
 use CommentSold\Exception\InvalidTokenException;
 use GuzzleHttp\Client;
 
 class Tokenizer
 {
-    private const TOKEN_SERVICE_URL = 'https://tokens.cs-api.com';
+    private string $baseUrl;
 
     public function __construct(
         private readonly string $privateKey,
         private readonly string $partnerId
     ) {
+        $this->baseUrl = Environment::PRODUCTION->getBaseTokenizerUrl();
+    }
+
+    public function setEnvironment(Environment $environment, ?string $baseUrl = null): void
+    {
+        if ($environment == Environment::CUSTOM && ! $baseUrl) {
+            throw new InvalidArgumentException('Tokenizer base URL required for custom environments');
+        }
+
+        if ($environment == Environment::CUSTOM) {
+            $this->baseUrl = $baseUrl;
+        } else {
+            $this->baseUrl = $environment->getBaseTokenizerUrl();
+        }
     }
 
     public function getPartnerToken(): string
@@ -41,12 +57,17 @@ class Tokenizer
         return $token;
     }
 
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
+
     private function getToken(string $privateKey, string $partnerId, ?string $shopId = null): string
     {
         try {
             $client   = new Client();
             $response = $client->post(
-                self::TOKEN_SERVICE_URL.'/tokenize',
+                $this->baseUrl.'/tokenize',
                 [
                     'headers' => [
                         'Content-Type' => 'application/json',

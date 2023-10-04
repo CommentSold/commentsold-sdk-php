@@ -20,7 +20,7 @@ class ShippingApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/shipping_calculator", $payload);
+        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/shipping_calculator", $payload);
 
         return new EstimateShippingResponse($response);
     }
