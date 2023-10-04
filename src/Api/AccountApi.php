@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CommentSold\Services;
+namespace CommentSold\Api;
 
 use CommentSold\Exception\InvalidContextException;
 use CommentSold\GlobalClient;
@@ -39,7 +39,7 @@ class AccountApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->get('accounts/authorizeUrl?scopes='.implode(',', $payload->scopes).'&redirect_uri='.$payload->redirect_uri);
+        $response = $this->restClient->post('accounts/authorizeUrl', $payload);
 
         return new GetOauthUrlResponse($response);
     }

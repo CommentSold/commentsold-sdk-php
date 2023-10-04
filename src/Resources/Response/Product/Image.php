@@ -10,8 +10,8 @@ class Image extends AbstractResource
 {
     public readonly int $id;
     public readonly string $url;
-    public readonly int $width;
-    public readonly int $height;
+    public readonly ?int $width;
+    public readonly ?int $height;
 
     public function __construct(object $payload)
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CommentSold\Services;
+namespace CommentSold\Api;
 
 use CommentSold\Exception\InvalidContextException;
 use CommentSold\GlobalClient;

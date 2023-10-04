@@ -10,6 +10,8 @@ use Psr\Http\Message\ResponseInterface;
 
 class Response
 {
+    private string $body = '';
+
     public function __construct(private readonly ResponseInterface $response)
     {
         if (isset($this->toObject()->error)) {
@@ -18,15 +20,17 @@ class Response
                 responseError: $this->toObject(),
             );
         }
+
+        try {
+            $this->body = $this->response->getBody()->getContents();
+        } catch (\Throwable $e) {
+            throw new InvalidResponseException('Invalid response: '.$e->getMessage());
+        }
     }
 
     public function getRawBody(): string
     {
-        try {
-            return $this->response->getBody()->getContents();
-        } catch (\Throwable $e) {
-            throw new InvalidResponseException('Invalid response: '.$e->getMessage());
-        }
+        return $this->body ?: '';
     }
 
     public function toArray()
