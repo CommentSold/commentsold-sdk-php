@@ -13,6 +13,6 @@ class AddWebhookListenerResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $this->data = new Webhook($payload->data);
+        $this->data = new WebhookListener($payload->data);
     }
 }

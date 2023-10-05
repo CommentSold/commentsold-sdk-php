@@ -14,12 +14,7 @@ class GetCustomersResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $customers = [];
-        foreach ($payload->data->customers ?? [] as $customer) {
-            $customers[] = new Customer($customer);
-        }
-
-        $this->data       = $customers;
+        $this->data       = new CustomerCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

@@ -1,15 +1,9 @@
 .DS_Store
 .env
-.eslintcache
-.php_cs.cache
-.php-cs-fixer.cache
 .vscode/
 /.idea
-/_ide_helper.php
-/_ide_helper_models.php
-/_lighthouse_ide_helper.php
 /vendor
-.phpunit.result.cache
+.phpunit.cache
 .phpstorm.meta.php
 feature.coverage.xml
 unit.coverage.xml

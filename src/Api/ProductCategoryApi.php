@@ -20,7 +20,7 @@ class ProductCategoryApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post("{$this->client->getShopId()}/product_categories", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/product_categories", $payload);
 
         return new UpdateProductCategoriesResponse($response);
     }

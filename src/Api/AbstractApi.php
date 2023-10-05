@@ -10,6 +10,7 @@ use CommentSold\Clients\Rest;
 abstract class AbstractApi
 {
     protected Rest $restClient;
+    protected const API_VERSION = 'v1';
 
     public function __construct(protected readonly AbstractClient $client)
     {

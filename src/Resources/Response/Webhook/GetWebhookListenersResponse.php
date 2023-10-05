@@ -14,12 +14,7 @@ class GetWebhookListenersResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $webhooks = [];
-        foreach ($payload->data ?? [] as $webhook) {
-            $webhooks[] = new Webhook($webhook);
-        }
-
-        $this->data       = $webhooks;
+        $this->data       = new WebhookListenerCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

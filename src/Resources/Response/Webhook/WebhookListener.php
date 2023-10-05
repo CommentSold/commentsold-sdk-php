@@ -6,7 +6,7 @@ namespace CommentSold\Resources\Response\Webhook;
 
 use CommentSold\Resources\AbstractResource;
 
-class Webhook extends AbstractResource
+class WebhookListener extends AbstractResource
 {
     public readonly int $id;
     public readonly string $topic;

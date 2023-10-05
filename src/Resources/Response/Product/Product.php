@@ -24,28 +24,15 @@ class Product extends AbstractResource
     public readonly bool $shop_favorite;
     public readonly ?AttributeNames $attribute_names;
     public readonly ?Image $main_image;
-    /** @var array[Image] */
-    public readonly array $additional_images;
-    /** @var array[string] */
-    public readonly array $tags;
+    public readonly ImageCollection $additional_images;
+    public readonly TagCollection $tags;
     public readonly ?Category $category;
-    /** @var array[Variant] */
-    public readonly array $variants;
+    public readonly VariantCollection $variants;
     public readonly ?ProductDropshipDetails $dropship_details;
     public readonly ?int $shopify_id;
 
     public function __construct(object $payload)
     {
-        $additionalImages = [];
-        foreach ($payload->additional_images ?? [] as $image) {
-            $additionalImages[] = new Image($image);
-        }
-
-        $variants = [];
-        foreach ($payload->variants ?? [] as $variant) {
-            $variants[] = new Variant($variant);
-        }
-
         $this->id                                 = $payload->id;
         $this->name                               = $payload->name;
         $this->description                        = $payload->description;
@@ -62,10 +49,10 @@ class Product extends AbstractResource
         $this->shop_favorite                      = $payload->shop_favorite;
         $this->attribute_names                    = $payload->attribute_names ? new AttributeNames($payload->attribute_names) : null;
         $this->main_image                         = $payload->main_image ? new Image($payload->main_image) : null;
-        $this->additional_images                  = $additionalImages;
-        $this->tags                               = $payload->tags;
+        $this->additional_images                  = new ImageCollection($payload->additional_images);
+        $this->tags                               = new TagCollection($payload->tags);
         $this->category                           = $payload->category ? new Category($payload->category) : null;
-        $this->variants                           = $variants;
+        $this->variants                           = new VariantCollection($payload->variants);
         $this->dropship_details                   = $payload->dropship_details ? new ProductDropshipDetails($payload->dropship_details) : null;
         $this->shopify_id                         = $payload->shopify_id;
     }

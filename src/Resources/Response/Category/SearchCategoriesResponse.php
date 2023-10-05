@@ -14,12 +14,7 @@ class SearchCategoriesResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $categories = [];
-        foreach ($payload->data->categories ?? [] as $category) {
-            $categories[] = new Category($category);
-        }
-
-        $this->data       = $categories;
+        $this->data       = new CategoryCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

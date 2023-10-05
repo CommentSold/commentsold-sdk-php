@@ -12,8 +12,6 @@ use GuzzleHttp\Client;
 
 class Rest
 {
-    private const API_URL = 'https://openapi.commentsold.com/v1';
-
     public function __construct(private readonly string $token)
     {
     }
@@ -52,7 +50,7 @@ class Rest
         try {
             $client = new Client();
             $response = $client->$method(
-                self::API_URL.'/'.ltrim($endpoint, '/'),
+                $endpoint,
                 [
                     'headers' => [
                         'Authorization' => 'Bearer '.$this->token,

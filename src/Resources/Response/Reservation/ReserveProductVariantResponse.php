@@ -11,8 +11,6 @@ class ReserveProductVariantResponse extends AbstractResponse
 {
     public function __construct(Response $response)
     {
-        $this->data = [
-            'reservation_ids' => $response->toArray(),
-        ];
+        $this->data = new ReservationIdCollection($response->toArray());
     }
 }

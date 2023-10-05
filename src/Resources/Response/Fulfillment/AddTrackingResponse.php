@@ -13,8 +13,6 @@ class AddTrackingResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $this->data = [
-            'id' => $payload->id,
-        ];
+        $this->data = new Tracking($payload);
     }
 }

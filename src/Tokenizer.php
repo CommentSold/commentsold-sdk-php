@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace CommentSold;
 
+use CommentSold\Enums\Environment;
 use CommentSold\Exception\CommentSoldException;
 use CommentSold\Exception\InvalidResponseException;
 use CommentSold\Exception\InvalidTokenException;
+use CommentSold\Resources\TokenizerEnvironment;
 use GuzzleHttp\Client;
 
 class Tokenizer
 {
-    private const TOKEN_SERVICE_URL = 'https://tokens.cs-api.com';
+    private string $baseUrl;
 
     public function __construct(
         private readonly string $privateKey,
-        private readonly string $partnerId
+        private readonly string $partnerId,
+        private readonly ?TokenizerEnvironment $environment = null
     ) {
+        $this->baseUrl = $this->environment ? $this->environment->baseUrl : Environment::SANDBOX->getBaseTokenizerUrl();
     }
 
     public function getPartnerToken(): string
@@ -41,12 +45,17 @@ class Tokenizer
         return $token;
     }
 
+    public function getBaseUrl(): string
+    {
+        return str_ends_with($this->baseUrl, '/') ? $this->baseUrl : $this->baseUrl.'/';
+    }
+
     private function getToken(string $privateKey, string $partnerId, ?string $shopId = null): string
     {
         try {
             $client   = new Client();
             $response = $client->post(
-                self::TOKEN_SERVICE_URL.'/tokenize',
+                $this->baseUrl.'tokenize',
                 [
                     'headers' => [
                         'Content-Type' => 'application/json',
