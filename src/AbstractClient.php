@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace CommentSold;
 
 use CommentSold\Clients\Rest;
-use CommentSold\Enum\Environment;
-use CommentSold\Exception\InvalidArgumentException;
+use CommentSold\Enums\Environment;
+use CommentSold\Resources\ClientEnvironment;
 
 abstract class AbstractClient
 {
     protected Rest $restClient;
-    protected Environment $environment = Environment::PRODUCTION;
     protected string $baseUrl;
 
-    public function __construct(private readonly string $token)
-    {
+    public function __construct(
+        private readonly string $token,
+        private readonly ?ClientEnvironment $environment = null
+    ) {
         $this->restClient = new Rest($this->token);
-        $this->baseUrl    = Environment::PRODUCTION->getBaseAPIUrl();
+        $this->baseUrl    = $this->environment ? $this->environment->baseUrl : Environment::SANDBOX->getBaseAPIUrl();
     }
 
     public function getClient(): Rest
@@ -25,24 +26,9 @@ abstract class AbstractClient
         return $this->restClient;
     }
 
-    public function setEnvironment(Environment $environment, ?string $baseUrl = null): void
-    {
-        if ($environment == Environment::CUSTOM && ! $baseUrl) {
-            throw new InvalidArgumentException('API base URL required for custom environments');
-        }
-
-        if ($environment == Environment::CUSTOM) {
-            $this->baseUrl = $baseUrl;
-        } else {
-            $this->baseUrl = $environment->getBaseAPIUrl();
-        }
-
-        $this->environment = $environment;
-    }
-
     public function getBaseUrl(): string
     {
-        return $this->baseUrl;
+        return str_ends_with($this->baseUrl, '/') ? $this->baseUrl : $this->baseUrl.'/';
     }
 
     abstract public function getShopId(): string;

@@ -20,7 +20,7 @@ class ShopApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->patch($this->baseUrl."{$this->client->getShopId()}/shop", $payload);
+        $response = $this->restClient->patch($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/shop", $payload);
 
         return new UpdateShopResponse($response);
     }

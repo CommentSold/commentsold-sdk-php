@@ -6,9 +6,9 @@ namespace CommentSold;
 
 use CommentSold\Enums\Environment;
 use CommentSold\Exception\CommentSoldException;
-use CommentSold\Exception\InvalidArgumentException;
 use CommentSold\Exception\InvalidResponseException;
 use CommentSold\Exception\InvalidTokenException;
+use CommentSold\Resources\TokenizerEnvironment;
 use GuzzleHttp\Client;
 
 class Tokenizer
@@ -17,22 +17,10 @@ class Tokenizer
 
     public function __construct(
         private readonly string $privateKey,
-        private readonly string $partnerId
+        private readonly string $partnerId,
+        private readonly ?TokenizerEnvironment $environment = null
     ) {
-        $this->baseUrl = Environment::PRODUCTION->getBaseTokenizerUrl();
-    }
-
-    public function setEnvironment(Environment $environment, ?string $baseUrl = null): void
-    {
-        if ($environment == Environment::CUSTOM && ! $baseUrl) {
-            throw new InvalidArgumentException('Tokenizer base URL required for custom environments');
-        }
-
-        if ($environment == Environment::CUSTOM) {
-            $this->baseUrl = $baseUrl;
-        } else {
-            $this->baseUrl = $environment->getBaseTokenizerUrl();
-        }
+        $this->baseUrl = $this->environment ? $this->environment->baseUrl : Environment::SANDBOX->getBaseTokenizerUrl();
     }
 
     public function getPartnerToken(): string
@@ -59,7 +47,7 @@ class Tokenizer
 
     public function getBaseUrl(): string
     {
-        return $this->baseUrl;
+        return str_ends_with($this->baseUrl, '/') ? $this->baseUrl : $this->baseUrl.'/';
     }
 
     private function getToken(string $privateKey, string $partnerId, ?string $shopId = null): string
@@ -67,7 +55,7 @@ class Tokenizer
         try {
             $client   = new Client();
             $response = $client->post(
-                $this->baseUrl.'/tokenize',
+                $this->baseUrl.'tokenize',
                 [
                     'headers' => [
                         'Content-Type' => 'application/json',

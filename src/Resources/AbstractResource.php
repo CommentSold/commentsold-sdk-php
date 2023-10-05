@@ -10,7 +10,7 @@ abstract class AbstractResource
     {
         $array = [];
 
-        $this->__objectToArray($this, $array);
+        $this->objectToArray($this, $array);
 
         return $array;
     }
@@ -20,7 +20,7 @@ abstract class AbstractResource
         return json_encode($this);
     }
 
-    private function __objectToArray($obj, &$arr)
+    private function objectToArray($obj, &$arr)
     {
         if (! is_object($obj) && ! is_array($obj)) {
             $arr = $obj;
@@ -30,7 +30,7 @@ abstract class AbstractResource
         foreach ($obj as $key => $value) {
             if (! empty($value)) {
                 $arr[$key] = [];
-                $this->__objectToArray($value, $arr[$key]);
+                $this->objectToArray($value, $arr[$key]);
             } else {
                 $arr[$key] = $value;
             }

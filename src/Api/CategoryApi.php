@@ -22,7 +22,7 @@ class CategoryApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->get($this->baseUrl."categories/{$payload->category_id}", $payload);
+        $response = $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."categories/{$payload->category_id}", $payload);
 
         return new GetSubCategoriesResponse($response);
     }
@@ -36,7 +36,7 @@ class CategoryApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->post($this->baseUrl."search/{$payload->category_id}?page={$payload->page}&perPage={$payload->perPage}", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."search/{$payload->category_id}?page={$payload->page}&perPage={$payload->perPage}", $payload);
 
         return new SearchCategoriesResponse($response);
     }

@@ -26,7 +26,7 @@ class ReservationApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/reservations", $payload);
+        $response = $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/reservations", $payload);
 
         return new GetReservationsResponse($response);
     }
@@ -40,7 +40,7 @@ class ReservationApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/reservations", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/reservations", $payload);
 
         return new ReserveProductVariantResponse($response);
     }
@@ -54,7 +54,7 @@ class ReservationApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete($this->baseUrl."{$this->client->getShopId()}/reservations/{$payload->reservation_id}");
+        $response = $this->restClient->delete($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/reservations/{$payload->reservation_id}");
 
         return new CancelReservationResponse($response);
     }
@@ -68,7 +68,7 @@ class ReservationApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete($this->baseUrl."{$this->client->getShopId()}/reservations/variant/{$payload->variant_id}?quantity={$payload->quantity}");
+        $response = $this->restClient->delete($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/reservations/variant/{$payload->variant_id}?quantity={$payload->quantity}");
 
         return new CancelReservesByProductVariantResponse($response);
     }

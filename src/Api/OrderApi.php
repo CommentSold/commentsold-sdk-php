@@ -26,7 +26,7 @@ class OrderApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get($this->baseUrl."{$this->client->getShopId()}/orders", $payload);
+        $response = $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/orders", $payload);
 
         return new GetOrdersResponse($response);
     }
@@ -40,7 +40,7 @@ class OrderApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post($this->baseUrl."{$this->client->getShopId()}/orders", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/orders", $payload);
 
         return new CreateOrderResponse($response);
     }
@@ -54,7 +54,7 @@ class OrderApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->baseUrl."{$this->client->getShopId()}/orders/{$payload->order_id}/cancel");
+        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/orders/{$payload->order_id}/cancel");
 
         return new CancelOrderResponse($response);
     }
@@ -68,7 +68,7 @@ class OrderApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->baseUrl."{$this->client->getShopId()}/orders/{$payload->order_id}/{$payload->line_item_id}/cancel");
+        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/orders/{$payload->order_id}/{$payload->line_item_id}/cancel");
 
         return new CancelOrderLineItemResponse($response);
     }

@@ -27,10 +27,12 @@ Example global scope SDK usage:
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
+$environment = new TokenizerEnvironment(Environment::PRODUCTION);
+$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id', $environment);
 $token = $tokenizer->getPartnerToken();
 
-$client = new CommentSold\GlobalClient($token);
+$environment = new ClientEnvironment(Environment::PRODUCTION);
+$client = new CommentSold\GlobalClient($token, $environment);
 $api = new CommentSold\Services\AccountApi($client);
 $request = new CommentSold\Resources\Request\Account\GetOauthUrlRequest(['all'], 'https://my-return-url.com/oauth');
 $oauthUrl = $api->getOauthUrl($request);
@@ -41,10 +43,12 @@ Example shop scope SDK usage:
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
+$environment = new TokenizerEnvironment(Environment::PRODUCTION);
+$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id', $environment);
 $token = $tokenizer->getShopToken('my-shop');
 
-$client = new CommentSold\ShopClient('my-shop', $token);
+$environment = new ClientEnvironment(Environment::PRODUCTION);
+$client = new CommentSold\ShopClient('my-shop', $token, $environment);
 $api = new CommentSold\Services\ProductApi($client);
 $request = new CommentSold\Resources\Request\Product\GetProductsRequest();
 
@@ -60,20 +64,4 @@ $pagination = $response->getPagination();
 // the total number of results
 $totalCount = $pagination->total;
 
-```
-
-Example using the sandbox for testing:
-
-```php
-require __DIR__.'/vendor/autoload.php';
-
-$tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id');
-$tokenizer->setEnvironment(CommentSold\Enums\Environment::SANDBOX);
-$token = $tokenizer->getPartnerToken();
-
-$client = new CommentSold\GlobalClient($token);
-$client->setEnvironment(CommentSold\Enums\Environment::SANDBOX);
-$api = new CommentSold\Services\AccountApi($client);
-$request = new CommentSold\Resources\Request\Account\GetOauthUrlRequest(['all'], 'https://my-return-url.com/oauth');
-$oauthUrl = $api->getOauthUrl($request);
 ```
