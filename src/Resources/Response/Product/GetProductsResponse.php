@@ -14,12 +14,7 @@ class GetProductsResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $products = [];
-        foreach ($payload->data ?? [] as $product) {
-            $products[] = new Product($product);
-        }
-
-        $this->data       = $products;
+        $this->data       = new ProductCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

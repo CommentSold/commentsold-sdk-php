@@ -13,8 +13,6 @@ class GetIframeUrlResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $this->data = [
-            'url' => $payload->url,
-        ];
+        $this->data = new IframeUrl($payload);
     }
 }

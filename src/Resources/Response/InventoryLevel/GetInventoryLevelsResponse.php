@@ -14,12 +14,7 @@ class GetInventoryLevelsResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $inventoryLevels = [];
-        foreach ($payload->data ?? [] as $inventoryLevel) {
-            $inventoryLevels[] = new InventoryLevel($inventoryLevel);
-        }
-
-        $this->data       = $inventoryLevels;
+        $this->data       = new InventoryLevelCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

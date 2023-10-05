@@ -13,8 +13,6 @@ class EstimateShippingResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $this->data = [
-            'shipping_fee' => $payload->shipping_fee,
-        ];
+        $this->data = new ShippingEstimate($payload);
     }
 }

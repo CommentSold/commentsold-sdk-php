@@ -13,9 +13,6 @@ class StartDropshipAllocationResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $this->data = [
-            'successfully_allocated_products'   => $payload->data->successfully_allocated_products,
-            'unsuccessfully_allocated_products' => $payload->data->unsuccessfully_allocated_products,
-        ];
+        $this->data = new DropshipAllocation($payload);
     }
 }

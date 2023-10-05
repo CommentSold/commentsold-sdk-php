@@ -8,11 +8,7 @@ abstract class AbstractResource
 {
     public function toArray(): array
     {
-        $array = [];
-
-        $this->objectToArray($this, $array);
-
-        return $array;
+        return $this->objectToArray($this);
     }
 
     public function toJson(): string
@@ -20,22 +16,13 @@ abstract class AbstractResource
         return json_encode($this);
     }
 
-    private function objectToArray($obj, &$arr)
+    private function objectToArray($object)
     {
-        if (! is_object($obj) && ! is_array($obj)) {
-            $arr = $obj;
-
-            return $arr;
-        }
-        foreach ($obj as $key => $value) {
-            if (! empty($value)) {
-                $arr[$key] = [];
-                $this->objectToArray($value, $arr[$key]);
-            } else {
-                $arr[$key] = $value;
-            }
+        $array = [];
+        foreach ($object as $key => $value) {
+            $array[$key] = (is_array($value) || is_object($value)) ? $this->objectToArray($value) : $value;
         }
 
-        return $arr;
+        return $array;
     }
 }

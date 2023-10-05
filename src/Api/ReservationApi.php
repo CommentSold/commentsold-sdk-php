@@ -10,7 +10,7 @@ use CommentSold\Resources\Request\Reservation\CancelReservationsByVariantRequest
 use CommentSold\Resources\Request\Reservation\GetReservationsRequest;
 use CommentSold\Resources\Request\Reservation\ReserveProductVariantRequest;
 use CommentSold\Resources\Response\Reservation\CancelReservationResponse;
-use CommentSold\Resources\Response\Reservation\CancelReservesByProductVariantResponse;
+use CommentSold\Resources\Response\Reservation\CancelReservationsByProductVariantResponse;
 use CommentSold\Resources\Response\Reservation\GetReservationsResponse;
 use CommentSold\Resources\Response\Reservation\ReserveProductVariantResponse;
 use CommentSold\ShopClient;
@@ -62,7 +62,7 @@ class ReservationApi extends AbstractApi
     /**
      * Cancel reservation(s) for the specified variant. (Not returned back to stock. Not recommended)
      */
-    public function cancelReservationsByProductVariant(CancelReservationsByVariantRequest $payload): CancelReservesByProductVariantResponse
+    public function cancelReservationsByProductVariant(CancelReservationsByVariantRequest $payload): CancelReservationsByProductVariantResponse
     {
         if (! $this->client instanceof ShopClient) {
             throw new InvalidContextException('Shop client required');
@@ -70,6 +70,6 @@ class ReservationApi extends AbstractApi
 
         $response = $this->restClient->delete($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/reservations/variant/{$payload->variant_id}?quantity={$payload->quantity}");
 
-        return new CancelReservesByProductVariantResponse($response);
+        return new CancelReservationsByProductVariantResponse($response);
     }
 }

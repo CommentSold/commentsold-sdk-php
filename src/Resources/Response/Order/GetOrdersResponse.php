@@ -14,12 +14,7 @@ class GetOrdersResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $orders = [];
-        foreach ($payload->data ?? [] as $order) {
-            $orders[] = new Order($order);
-        }
-
-        $this->data       = $orders;
+        $this->data       = new OrderCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

@@ -7,10 +7,10 @@ namespace CommentSold\Resources\Response\Reservation;
 use CommentSold\Resources\Response\AbstractResponse;
 use CommentSold\Response;
 
-class ReserveProductVariantResponse extends AbstractResponse
+class CancelReservationsByProductVariantResponse extends AbstractResponse
 {
     public function __construct(Response $response)
     {
-        $this->data = new ReservationIdCollection($response->toArray());
+        $this->data = new CanceledReservationIdCollection($response->toArray());
     }
 }
