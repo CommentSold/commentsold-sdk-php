@@ -16,9 +16,7 @@
         "phpunit/phpunit": "^9.5.10",
         "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-mockery": "^1.1",
-        "laravel/pint": "1.10.5",
-        "qossmic/deptrac-shim": "^1.0",
-        "brianium/paratest": "^6"
+        "laravel/pint": "1.10.5"
     },
     "autoload": {
         "psr-4": {
