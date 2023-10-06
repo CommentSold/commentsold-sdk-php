@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CommentSoldTest;
+namespace Tests;
 
 use CommentSold\Enums\Environment;
 use CommentSold\Exception\InvalidArgumentException;
