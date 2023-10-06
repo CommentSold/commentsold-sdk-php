@@ -11,3 +11,5 @@ test.coverage.xml
 phpstan.neon
 .vim
 Makefile
+phpunit.xml
+.phpunit.result.cache
