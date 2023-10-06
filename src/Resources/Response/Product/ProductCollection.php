@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class ProductCollection extends AbstractResource
 {
-    /** @var array[Product] */
+    /** @var Product[] */
     public array $products;
 
     public function __construct(?array $payload = [])

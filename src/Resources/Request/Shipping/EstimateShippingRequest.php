@@ -8,8 +8,8 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class EstimateShippingRequest extends AbstractRequest
 {
-    /** @var array[int] */
     public function __construct(
+        /** @var int[] */
         public array $variant_ids,
         public ?string $shipping_method = null,
     ) {

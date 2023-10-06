@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace CommentSold\Resources\Response;
 
+use CommentSold\Resources\AbstractResource;
+
 abstract class AbstractResponse
 {
-    protected $data;
-    protected $pagination;
+    protected ?AbstractResource $data;
+    protected ?Pagination $pagination;
 
-    public function getData()
+    public function getData(): ?AbstractResource
     {
         return $this->data ?? null;
     }
 
-    public function getPagination()
+    public function getPagination(): ?Pagination
     {
         return $this->pagination ?? null;
     }

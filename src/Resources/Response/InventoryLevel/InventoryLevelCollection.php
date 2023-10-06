@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class InventoryLevelCollection extends AbstractResource
 {
-    /** @var array[InventoryLevel] */
+    /** @var InventoryLevel[] */
     public array $inventory_levels;
 
     public function __construct(?array $payload = [])

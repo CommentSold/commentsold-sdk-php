@@ -8,8 +8,9 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class RestockDropshippingAllocationRequest extends AbstractRequest
 {
-    /** @var array[int] */
-    public function __construct(public array $product_ids)
-    {
+    public function __construct(
+        /** @var int[] */
+        public array $product_ids
+    ) {
     }
 }

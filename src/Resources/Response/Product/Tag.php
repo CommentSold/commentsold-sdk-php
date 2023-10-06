@@ -10,7 +10,7 @@ class Tag extends AbstractResource
 {
     public readonly string $tag;
 
-    public function __construct($tag)
+    public function __construct(string $tag)
     {
         $this->tag = $tag;
     }

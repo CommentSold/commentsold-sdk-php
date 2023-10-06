@@ -14,12 +14,7 @@ class GetReservationsResponse extends AbstractResponse
     {
         $payload = $response->toObject();
 
-        $reservations = [];
-        foreach ($payload->data ?? [] as $reservation) {
-            $reservations[] = new Reservation($reservation);
-        }
-
-        $this->data       = $reservations;
+        $this->data       = new ReservationCollection($payload->data);
         $this->pagination = new Pagination($payload->pagination);
     }
 }

@@ -8,7 +8,9 @@ use CommentSold\Resources\AbstractResource;
 
 class DropshipAllocation extends AbstractResource
 {
+    /** @var int[] */
     public readonly array $successfully_allocated_products;
+    /** @var int[] */
     public readonly array $unsuccessfully_allocated_products;
 
     public function __construct(object $payload)

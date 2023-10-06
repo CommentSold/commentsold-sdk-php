@@ -10,6 +10,7 @@ use CommentSold\Resources\Request\AbstractRequest;
 class GetOrdersRequest extends AbstractRequest
 {
     public function __construct(
+        /** @var string[]|null */
         public ?array $filter = null,
         public int $page = 1,
         public int $perPage = self::PER_PAGE,

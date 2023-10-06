@@ -10,7 +10,7 @@ class ReservationId extends AbstractResource
 {
     public readonly int $reservation_id;
 
-    public function __construct($id)
+    public function __construct(int $id)
     {
         $this->reservation_id = $id;
     }
