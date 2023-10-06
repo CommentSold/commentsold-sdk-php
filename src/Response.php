@@ -33,13 +33,13 @@ class Response
         return $this->body ?: '';
     }
 
-    /** @return mixed[] */
-    public function toArray(): array
+    /** @return mixed[]|null */
+    public function toArray(): ?array
     {
         return json_decode($this->getRawBody(), true);
     }
 
-    public function toObject(): object
+    public function toObject(): ?object
     {
         return json_decode($this->getRawBody(), false);
     }

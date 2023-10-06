@@ -3,8 +3,5 @@ parameters:
   paths:
     - src
   ignoreErrors:
-    #-
-      #message: '#Access to an undefined property [a-zA-Z0-9\\_]+::\$foo#'
-      #path: some/dir/SomeFile.php
     - '#Constructor of class CommentSold\\Resources\\Response(.+) has an unused parameter \$response#'
     - '#Method CommentSold\\Resources\\Response(.+)::__construct\(\) has parameter \$payload with no value type specified in iterable type array#'
