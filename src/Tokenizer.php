@@ -55,7 +55,7 @@ class Tokenizer
         try {
             $client   = new Client();
             $response = $client->post(
-                $this->baseUrl.'tokenize',
+                $this->getBaseUrl().'tokenize',
                 [
                     'headers' => [
                         'Content-Type' => 'application/json',
@@ -66,7 +66,7 @@ class Tokenizer
                         'payload' => [
                             'audience'   => 'openapi',
                             'partner_id' => $partnerId,
-                            'shop'       => strtolower($shopId),
+                            'shop'       => $shopId ? strtolower($shopId) : null,
                         ],
                     ]),
                 ]

@@ -20,7 +20,7 @@ class TaxApi extends AbstractApi
             throw new InvalidContextException('Global client required');
         }
 
-        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION.'quote', $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().self::API_VERSION.'/'.'quote', $payload);
 
         return new GetTaxQuoteResponse($response);
     }

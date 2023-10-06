@@ -27,11 +27,11 @@ Example global scope SDK usage:
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-$environment = new TokenizerEnvironment(Environment::PRODUCTION);
+$environment = new CommentSold\Resources\TokenizerEnvironment(CommentSold\Enums\Environment::PRODUCTION);
 $tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id', $environment);
 $token = $tokenizer->getPartnerToken();
 
-$environment = new ClientEnvironment(Environment::PRODUCTION);
+$environment = new CommentSold\Resources\ClientEnvironment(CommentSold\Enums\Environment::PRODUCTION);
 $client = new CommentSold\GlobalClient($token, $environment);
 $api = new CommentSold\Services\AccountApi($client);
 $request = new CommentSold\Resources\Request\Account\GetOauthUrlRequest(['all'], 'https://my-return-url.com/oauth');
@@ -43,11 +43,11 @@ Example shop scope SDK usage:
 ```php
 require __DIR__.'/vendor/autoload.php';
 
-$environment = new TokenizerEnvironment(Environment::PRODUCTION);
+$environment = new CommentSold\Resources\TokenizerEnvironment(CommentSold\Enums\Environment::PRODUCTION);
 $tokenizer = new CommentSold\Tokenizer('my_private_key', 'my_partner_id', $environment);
 $token = $tokenizer->getShopToken('my-shop');
 
-$environment = new ClientEnvironment(Environment::PRODUCTION);
+$environment = new CommentSold\Resources\ClientEnvironment(CommentSold\Enums\Environment::PRODUCTION);
 $client = new CommentSold\ShopClient('my-shop', $token, $environment);
 $api = new CommentSold\Services\ProductApi($client);
 $request = new CommentSold\Resources\Request\Product\GetProductsRequest();

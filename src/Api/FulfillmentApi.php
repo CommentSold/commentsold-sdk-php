@@ -20,7 +20,7 @@ class FulfillmentApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/fulfillment/addTracking", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/fulfillment/addTracking", $payload);
 
         return new AddTrackingResponse($response);
     }

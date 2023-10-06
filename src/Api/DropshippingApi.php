@@ -22,7 +22,7 @@ class DropshippingApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/dropshipping/allocations", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/dropshipping/allocations", $payload);
 
         return new StartDropshipAllocationResponse($response);
     }
@@ -36,7 +36,7 @@ class DropshippingApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/dropshipping/allocations", $payload);
+        $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/dropshipping/allocations", $payload);
 
         return new RestockDropshipAllocationResponse($response);
     }

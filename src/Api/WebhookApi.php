@@ -24,7 +24,7 @@ class WebhookApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/webhooks", $payload);
+        $response = $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/webhooks", $payload);
 
         return new GetWebhookListenersResponse($response);
     }
@@ -38,7 +38,7 @@ class WebhookApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->post($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/webhooks", $payload);
+        $response = $this->restClient->post($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/webhooks", $payload);
 
         return new AddWebhookListenerResponse($response);
     }
@@ -52,7 +52,7 @@ class WebhookApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->delete($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/webhooks/{$payload->webhook_id}");
+        $response = $this->restClient->delete($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/webhooks/{$payload->webhook_id}");
 
         return new DeleteWebhookListenerResponse($response);
     }
