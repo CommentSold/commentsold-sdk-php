@@ -28,7 +28,7 @@ class InventoryLevelApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response =  $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/inventory_levels", $payload);
+        $response =  $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/inventory_levels", $payload);
 
         return new GetInventoryLevelsResponse($response);
     }
@@ -42,7 +42,7 @@ class InventoryLevelApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}");
+        $response = $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}");
 
         return new GetVariantInventoryLevelsResponse($response);
     }
@@ -56,7 +56,7 @@ class InventoryLevelApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/add", $payload);
+        $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/add", $payload);
 
         return new AddVariantInventoryLevelResponse($response);
     }
@@ -70,7 +70,7 @@ class InventoryLevelApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/subtract", $payload);
+        $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/subtract", $payload);
 
         return new SubtractVariantInventoryLevelResponse($response);
     }
@@ -84,7 +84,7 @@ class InventoryLevelApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->put($this->client->getBaseUrl().'/'.self::API_VERSION."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/set_absolute_shelf_quantity", $payload);
+        $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/inventory_levels/{$payload->variant_id}/set_absolute_shelf_quantity", $payload);
 
         return new SetVariantOnShelfLevelResponse($response);
     }

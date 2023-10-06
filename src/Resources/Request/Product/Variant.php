@@ -15,7 +15,7 @@ class Variant extends AbstractRequest
         public int $cost_in_cents,
         public string $sku,
         public bool $is_archived,
-        public ?int $original_price_in_cents = null,
+        public int $original_price_in_cents,
         public ?string $barcode = null,
         public ?Dimensions $dimensions = null,
         public ?AttributeValues $attributes = null,
