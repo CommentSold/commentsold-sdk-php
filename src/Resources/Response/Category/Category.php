@@ -15,7 +15,7 @@ class Category extends AbstractResource
     public function __construct(object $payload)
     {
         $this->id        = $payload->id;
-        $this->total     = $payload->total;
+        $this->title     = $payload->title;
         $this->full_path = $payload->full_path;
     }
 }

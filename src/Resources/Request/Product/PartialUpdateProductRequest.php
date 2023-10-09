@@ -9,8 +9,8 @@ use CommentSold\Resources\Request\AbstractRequest;
 class PartialUpdateProductRequest extends AbstractRequest
 {
     /**
-     * @var array[Image]|null
-     * @var array[string]|null
+     * @param  Image[]|null  $additional_images
+     * @param  string[]|null  $tags
      */
     public function __construct(
         public int $product_id,

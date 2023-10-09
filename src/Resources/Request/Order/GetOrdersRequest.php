@@ -9,6 +9,11 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class GetOrdersRequest extends AbstractRequest
 {
+    /**
+     * @param  string[]|null  $filter
+     *
+     * @throws InvalidArgumentException
+     */
     public function __construct(
         public ?array $filter = null,
         public int $page = 1,

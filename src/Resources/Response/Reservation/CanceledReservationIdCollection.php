@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class CanceledReservationIdCollection extends AbstractResource
 {
-    /** @var array[ReservationId] */
+    /** @var ReservationId[] */
     public array $canceled_reservation_ids;
 
     public function __construct(?array $payload = [])

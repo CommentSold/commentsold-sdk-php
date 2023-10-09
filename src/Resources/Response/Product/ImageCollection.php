@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class ImageCollection extends AbstractResource
 {
-    /** @var array[Image] */
+    /** @var Image[] */
     public array $images;
 
     public function __construct(?array $payload = [])

@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class VariantCollection extends AbstractResource
 {
-    /** @var array[Variant] */
+    /** @var Variant[] */
     public array $variants;
 
     public function __construct(?array $payload = [])

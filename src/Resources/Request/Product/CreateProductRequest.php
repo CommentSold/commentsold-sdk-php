@@ -9,9 +9,9 @@ use CommentSold\Resources\Request\AbstractRequest;
 class CreateProductRequest extends AbstractRequest
 {
     /**
-     * @var array[Image]|null
-     * @var array[string]|null
-     * @var array[Variant]
+     * @param  Variant[]  $variants
+     * @param  Image[]|null  $additional_images
+     * @param  string[]|null  $tags
      */
     public function __construct(
         public string $name,

@@ -8,7 +8,9 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class UpdateProductCategoriesRequest extends AbstractRequest
 {
-    /** @var array[int] */
+    /**
+     * @param  int[]  $product_ids
+     */
     public function __construct(
         public int $category_id,
         public array $product_ids,

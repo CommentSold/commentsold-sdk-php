@@ -9,7 +9,12 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class CreateOrderRequest extends AbstractRequest
 {
-    /** @var array[int] */
+    /**
+     * @param  int[]  $reservation_ids
+     * @param  int[]|null  $custom_reservation_prices
+     *
+     * @throws InvalidArgumentException
+     */
     public function __construct(
         public array $reservation_ids,
         public int $amount_paid,

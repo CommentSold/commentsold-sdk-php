@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class LineItemCollection extends AbstractResource
 {
-    /** @var array[LineItem] */
+    /** @var LineItem[] */
     public array $lines;
 
     public function __construct(?array $payload = [])

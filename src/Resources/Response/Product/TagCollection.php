@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class TagCollection extends AbstractResource
 {
-    /** @var array[Tag] */
+    /** @var Tag[] */
     public array $tags;
 
     public function __construct(?array $payload = [])

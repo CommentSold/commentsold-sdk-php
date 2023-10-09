@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class CustomerCollection extends AbstractResource
 {
-    /** @var array[Customer] */
+    /** @var Customer[] */
     public array $customers;
 
     public function __construct(?array $payload = [])

@@ -9,6 +9,11 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class GetCustomersRequest extends AbstractRequest
 {
+    /**
+     * @param  string[]|null  $filter
+     *
+     * @throws InvalidArgumentException
+     */
     public function __construct(
         public ?array $filter = null,
         public int $page = 1,

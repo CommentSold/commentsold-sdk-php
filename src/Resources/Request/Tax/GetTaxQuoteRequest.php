@@ -8,7 +8,9 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class GetTaxQuoteRequest extends AbstractRequest
 {
-    /** @var array[LineItem] */
+    /**
+     * @param  LineItem[]  $line_items
+     */
     public function __construct(
         public Authorization $authorization,
         public FromAddress $from_address,

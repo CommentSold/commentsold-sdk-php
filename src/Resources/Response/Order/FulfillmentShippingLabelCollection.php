@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class FulfillmentShippingLabelCollection extends AbstractResource
 {
-    /** @var array[FulfillmentShippingLabel] */
+    /** @var FulfillmentShippingLabel[] */
     public array $shipping_labels;
 
     public function __construct(?array $payload = [])

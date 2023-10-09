@@ -8,7 +8,7 @@ use CommentSold\Resources\AbstractResource;
 
 class WebhookListenerCollection extends AbstractResource
 {
-    /** @var array[WebhookListener] */
+    /** @var WebhookListener[] */
     public array $webhook_listeners;
 
     public function __construct(?array $payload = [])

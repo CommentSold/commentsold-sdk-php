@@ -6,6 +6,7 @@ namespace CommentSold\Resources;
 
 abstract class AbstractResource
 {
+    /** @return mixed[] */
     public function toArray(): array
     {
         return $this->objectToArray($this);
@@ -16,7 +17,8 @@ abstract class AbstractResource
         return json_encode($this);
     }
 
-    private function objectToArray($object)
+    /** @return mixed[] */
+    private function objectToArray(mixed $object): array
     {
         $array = [];
         foreach ($object as $key => $value) {

@@ -6,18 +6,18 @@ namespace CommentSold\Resources\Response\Reservation;
 
 use CommentSold\Resources\AbstractResource;
 
-class ReservationIdCollection extends AbstractResource
+class ReservationCollection extends AbstractResource
 {
-    /** @var ReservationId[] */
-    public array $reservation_ids;
+    /** @var Reservation[] */
+    public array $reservations;
 
     public function __construct(?array $payload = [])
     {
         $array = [];
         foreach ($payload as $item) {
-            $array[] = new ReservationId($item);
+            $array[] = new Reservation($item);
         }
 
-        $this->reservation_ids = $array;
+        $this->reservations = $array;
     }
 }
