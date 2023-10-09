@@ -9,8 +9,13 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class CreateOrderRequest extends AbstractRequest
 {
+    /**
+     * @param  int[]  $reservation_ids
+     * @param  int[]|null  $custom_reservation_prices
+     *
+     * @throws InvalidArgumentException
+     */
     public function __construct(
-        /** @var int[] */
         public array $reservation_ids,
         public int $amount_paid,
         public int $subtotal,
@@ -19,7 +24,6 @@ class CreateOrderRequest extends AbstractRequest
         public int $discount,
         public ShippingAddress $shipping_address,
         public ?bool $update_customer_info = null,
-        /** @var int[]|null */
         public ?array $custom_reservation_prices = null,
     ) {
         if ($this->amount_paid < 0) {

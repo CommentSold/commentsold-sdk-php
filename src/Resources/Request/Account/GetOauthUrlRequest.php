@@ -8,8 +8,10 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class GetOauthUrlRequest extends AbstractRequest
 {
+    /**
+     * @param  string[]  $scopes
+     */
     public function __construct(
-        /** @var string[] */
         public array $scopes,
         public string $redirect_uri,
     ) {

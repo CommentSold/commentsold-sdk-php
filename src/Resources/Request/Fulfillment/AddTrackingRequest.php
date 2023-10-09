@@ -8,8 +8,10 @@ use CommentSold\Resources\Request\AbstractRequest;
 
 class AddTrackingRequest extends AbstractRequest
 {
+    /**
+     * @param  int[]  $line_item_ids
+     */
     public function __construct(
-        /** @var int[] */
         public array $line_item_ids,
         public ShippingInfo $shipping_info,
     ) {
