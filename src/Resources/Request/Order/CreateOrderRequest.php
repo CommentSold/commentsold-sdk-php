@@ -25,6 +25,10 @@ class CreateOrderRequest extends AbstractRequest
         public ShippingAddress $shipping_address,
         public ?bool $update_customer_info = null,
         public ?array $custom_reservation_prices = null,
+        public ?bool $local_pickup = null,
+        public ?string $external_order_service = null,
+        public ?string $external_order_id = null,
+        public ?string $external_order_url = null,
     ) {
         if ($this->amount_paid < 0) {
             throw new InvalidArgumentException('Amount paid can not be less than 0');
