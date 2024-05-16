@@ -12,6 +12,7 @@ class SubtractVariantInventoryLevelRequest extends AbstractRequest
         public int $variant_id,
         public int $relative_quantity,
         public ?string $note = null,
+        public ?int $updated_at = null,
     ) {
     }
 }

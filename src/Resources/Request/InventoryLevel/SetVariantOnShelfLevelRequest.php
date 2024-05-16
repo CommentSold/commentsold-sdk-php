@@ -12,6 +12,7 @@ class SetVariantOnShelfLevelRequest extends AbstractRequest
         public int $variant_id,
         public int $absolute_quantity,
         public ?string $note = null,
+        public ?int $updated_at = null,
     ) {
     }
 }

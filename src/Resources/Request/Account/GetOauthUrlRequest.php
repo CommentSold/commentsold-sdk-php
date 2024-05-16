@@ -14,6 +14,7 @@ class GetOauthUrlRequest extends AbstractRequest
     public function __construct(
         public array $scopes,
         public string $redirect_uri,
+        public string $external_shop_id,
     ) {
     }
 }

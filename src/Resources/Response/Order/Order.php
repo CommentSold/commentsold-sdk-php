@@ -15,6 +15,7 @@ class Order extends AbstractResource
     public readonly Payment $payment;
     public readonly Fulfillment $fulfillment;
     public readonly LineItemCollection $line_items;
+    public readonly string $order_note;
     public readonly int $created_at;
     public readonly int $updated_at;
 
@@ -27,6 +28,7 @@ class Order extends AbstractResource
         $this->payment          = new Payment($payload->payment);
         $this->fulfillment      = new Fulfillment($payload->fulfillment);
         $this->line_items       = new LineItemCollection($payload->line_items);
+        $this->order_note       = $payload->order_note;
         $this->created_at       = $payload->created_at;
         $this->updated_at       = $payload->updated_at;
     }
