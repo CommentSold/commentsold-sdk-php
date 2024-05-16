@@ -58,7 +58,7 @@ class OrderApi extends AbstractApi
             throw new InvalidContextException('Shop client required');
         }
 
-        $response = $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/order", $payload->order_id);
+        $response = $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/order/{$payload->order_id}");
 
         return new GetOrderResponse($response);
     }
