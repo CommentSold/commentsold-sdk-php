@@ -22,6 +22,7 @@ class CreateProductVariantRequest extends AbstractRequest
         public ?AttributeValues $attributes = null,
         public ?int $shopify_id = null,
         public ?int $shopify_inventory_item_id = null,
+        public ?int $updated_at = null,
     ) {
         if ($this->price_in_cents < 0) {
             throw new InvalidArgumentException('Price can not be less than 0');
