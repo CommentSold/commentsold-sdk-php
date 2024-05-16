@@ -6,11 +6,13 @@ namespace CommentSold\Api;
 
 use CommentSold\Exception\InvalidContextException;
 use CommentSold\Resources\Request\Order\CancelOrderLineItemRequest;
+use CommentSold\Resources\Request\Order\CancelOrderLineItemsRequest;
 use CommentSold\Resources\Request\Order\CancelOrderRequest;
 use CommentSold\Resources\Request\Order\CreateOrderRequest;
 use CommentSold\Resources\Request\Order\GetOrderRequest;
 use CommentSold\Resources\Request\Order\GetOrdersRequest;
 use CommentSold\Resources\Response\Order\CancelOrderLineItemResponse;
+use CommentSold\Resources\Response\Order\CancelOrderLineItemsResponse;
 use CommentSold\Resources\Response\Order\CancelOrderResponse;
 use CommentSold\Resources\Response\Order\CreateOrderResponse;
 use CommentSold\Resources\Response\Order\GetOrderResponse;
@@ -87,5 +89,19 @@ class OrderApi extends AbstractApi
         $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/orders/{$payload->order_id}/{$payload->line_item_id}/cancel");
 
         return new CancelOrderLineItemResponse($response);
+    }
+
+    /**
+     * Cancel multiple line items from an order
+     */
+    public function cancelOrderLineItems(CancelOrderLineItemsRequest $payload): CancelOrderLineItemsResponse
+    {
+        if (! $this->client instanceof ShopClient) {
+            throw new InvalidContextException('Shop client required');
+        }
+
+        $response = $this->restClient->put($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/orders/{$payload->order_id}/cancel_multiple");
+
+        return new CancelOrderLineItemsResponse($response);
     }
 }
