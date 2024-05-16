@@ -8,10 +8,12 @@ use CommentSold\Exception\InvalidContextException;
 use CommentSold\Resources\Request\Order\CancelOrderLineItemRequest;
 use CommentSold\Resources\Request\Order\CancelOrderRequest;
 use CommentSold\Resources\Request\Order\CreateOrderRequest;
+use CommentSold\Resources\Request\Order\GetOrderRequest;
 use CommentSold\Resources\Request\Order\GetOrdersRequest;
 use CommentSold\Resources\Response\Order\CancelOrderLineItemResponse;
 use CommentSold\Resources\Response\Order\CancelOrderResponse;
 use CommentSold\Resources\Response\Order\CreateOrderResponse;
+use CommentSold\Resources\Response\Order\GetOrderResponse;
 use CommentSold\Resources\Response\Order\GetOrdersResponse;
 use CommentSold\ShopClient;
 
@@ -43,6 +45,20 @@ class OrderApi extends AbstractApi
         $response = $this->restClient->post($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/orders", $payload);
 
         return new CreateOrderResponse($response);
+    }
+
+    /**
+     * Returns an order for a given id
+     */
+    public function getOrder(GetOrderRequest $payload): GetOrderResponse
+    {
+        if (! $this->client instanceof ShopClient) {
+            throw new InvalidContextException('Shop client required');
+        }
+
+        $response = $this->restClient->get($this->client->getBaseUrl().self::API_VERSION.'/'."{$this->client->getShopId()}/order", $payload->order_id);
+
+        return new GetOrderResponse($response);
     }
 
     /**

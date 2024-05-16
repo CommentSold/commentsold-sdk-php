@@ -18,6 +18,7 @@ class Payment extends AbstractResource
     public readonly string $payment_ref;
     public readonly string $transaction_id;
     public readonly int $payment_date;
+    public readonly string $coupon_code;
 
     public function __construct(object $payload)
     {
@@ -31,5 +32,6 @@ class Payment extends AbstractResource
         $this->payment_ref     = $payload->payment_ref;
         $this->transaction_id  = $payload->transaction_id;
         $this->payment_date    = $payload->payment_date;
+        $this->coupon_code     = $payload->coupon_code;
     }
 }
